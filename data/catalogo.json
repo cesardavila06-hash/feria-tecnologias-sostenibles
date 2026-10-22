@@ -1,0 +1,617 @@
+{
+ "evento": "Feria virtual de tecnologías industriales sostenibles",
+ "aliados": [
+  {
+   "nombre": "Rumbo al IX Foro Internacional de Economía Circular",
+   "logo": "img/partner-foro-ec.png"
+  },
+  {
+   "nombre": "Unión Europea · Cooperación Alemana · GIZ",
+   "logo": "img/partner-ue-giz.png"
+  },
+  {
+   "nombre": "AHK Perú",
+   "logo": "img/partner-ahk.png"
+  },
+  {
+   "nombre": "Cámara Oficial de Comercio de España en el Perú",
+   "logo": "img/camara-espana.png"
+  },
+  {
+   "nombre": "Cámara de Comercio Italiana del Perú",
+   "logo": "img/camara-italia.png"
+  }
+ ],
+ "_plantilla_stand": {
+  "n": 0,
+  "estado": "ocupado",
+  "empresa": "",
+  "razon_social": "",
+  "logo": "img/<archivo-logo>",
+  "imagenes": [
+   {
+    "src": "img/<archivo-foto>",
+    "pie": ""
+   }
+  ],
+  "industria": "",
+  "sector": "",
+  "tecnologias": [
+   ""
+  ],
+  "titulo": "",
+  "lugar": "",
+  "reto": "",
+  "solucion": "",
+  "cifras": [
+   [
+    "valor",
+    "descripción"
+   ]
+  ],
+  "circular": "",
+  "nota": "",
+  "contacto": {
+   "nombre": "",
+   "correo": "",
+   "telefono": "",
+   "direccion": "",
+   "web": "https://",
+   "web_etiqueta": ""
+  }
+ },
+ "pabellones": [
+  {
+   "id": "de",
+   "slug": "alemania",
+   "nombre": "Alemania",
+   "bandera": [
+    "#111111",
+    "#dd0000",
+    "#ffce00"
+   ],
+   "estado": "abierto",
+   "stands": [
+    {
+     "n": 1,
+     "estado": "ocupado",
+     "empresa": "HUBER Technology Perú",
+     "razon_social": "",
+     "logo": "img/logo-huber.svg",
+     "imagenes": [],
+     "industria": "Saneamiento municipal",
+     "sector": "Saneamiento y tratamiento de aguas residuales",
+     "tecnologias": [
+      "Secado solar de lodos",
+      "Valorización de biosólidos"
+     ],
+     "titulo": "Reducción de costos y valorización de biosólidos en la PTAR Pachacútec mediante secado de lodos",
+     "lugar": "PTAR Pachacútec · Lima, Perú",
+     "reto": "La PTAR Pachacútec generaba grandes volúmenes de lodo húmedo que debían cargarse, transportarse y disponerse en rellenos sanitarios, con un costo alto y emisiones por transporte.",
+     "solucion": "Tres líneas de secado solar de lodos que elevan el contenido de materia seca hasta cerca de 90 %, lo que reduce de forma importante el peso y el volumen del lodo.",
+     "cifras": [
+      [
+       "S/ 1 014 000",
+       "de ahorro anual en carga, transporte y disposición final"
+      ],
+      [
+       "624",
+       "viajes de camión evitados al año hacia rellenos sanitarios"
+      ],
+      [
+       "~90 %",
+       "de materia seca en el lodo tratado"
+      ],
+      [
+       "3",
+       "líneas de secado solar instaladas"
+      ]
+     ],
+     "circular": "El biosólido seco se comercializa como fertilizante: un residuo de la planta pasa a ser un producto con valor económico. También baja la demanda de espacio en rellenos.",
+     "nota": "",
+     "contacto": {
+      "nombre": "José Saavedra",
+      "correo": "jose.saavedra@huber.pe",
+      "telefono": "963 030 045",
+      "direccion": "Reducto 861, of. 602, Miraflores, Lima",
+      "web": "https://www.huber-technology.com",
+      "web_etiqueta": "huber-technology.com"
+     }
+    },
+    {
+     "n": 2,
+     "estado": "ocupado",
+     "empresa": "Siemens Energy",
+     "razon_social": "",
+     "logo": "img/logo-se.png",
+     "imagenes": [],
+     "industria": "Pulpa y papel",
+     "sector": "Energía",
+     "tecnologias": [
+      "Cogeneración a biomasa",
+      "Turbinas de vapor SST-600"
+     ],
+     "titulo": "Autosuficiencia energética a gran escala para la planta de pulpa Arauco Sucuriú",
+     "lugar": "Arauco Sucuriú · Brasil",
+     "reto": "Abastecer de energía, de forma sostenible, a la que será la mayor planta de pulpa de eucalipto de una sola línea del mundo, con 3,5 millones de toneladas al año.",
+     "solucion": "Solución integral de generación y distribución eléctrica a biomasa: tres turbinas de vapor SST-600, tres generadores SGen6-100A de 2 polos y tres sistemas de control T3000. Son las mayores unidades turbina-generador que Siemens Energy ha suministrado a esta industria.",
+     "cifras": [
+      [
+       "636 MW",
+       "de capacidad instalada a biomasa"
+      ],
+      [
+       "400 MW",
+       "de autosuficiencia energética para el complejo"
+      ],
+      [
+       "220 MW",
+       "de electricidad renovable exportada a la red"
+      ],
+      [
+       "3,5 Mt",
+       "de pulpa al año en una sola línea"
+      ]
+     ],
+     "circular": "La planta usa biomasa como combustible, cubre su propia demanda eléctrica y entrega el excedente renovable a la red.",
+     "nota": "",
+     "contacto": {
+      "nombre": "Enrique Blondet Bellido",
+      "correo": "enrique.blondet@siemens-energy.com",
+      "telefono": "+51 961 477 746",
+      "direccion": "Lima, Perú",
+      "web": "https://www.siemens-energy.com/global/en/home.html",
+      "web_etiqueta": "siemens-energy.com"
+     }
+    },
+    {
+     "n": 3,
+     "estado": "ocupado",
+     "empresa": "Festo",
+     "razon_social": "FESTO S.R.L.",
+     "logo": "img/logo-festo.svg",
+     "imagenes": [],
+     "industria": "Manufactura",
+     "sector": "Automatización industrial",
+     "tecnologias": [
+      "Auditoría de aire comprimido ISO 11011",
+      "Automatización eficiente"
+     ],
+     "titulo": "Automatización sostenible y eficiencia energética con Festo Energy Saving Services",
+     "lugar": "Plantas industriales con sistemas de aire comprimido",
+     "reto": "Las fugas y el uso ineficiente del aire comprimido elevan el consumo eléctrico y las emisiones de las plantas industriales.",
+     "solucion": "Auditorías certificadas según DIN EN ISO 11011 de generación, distribución y consumo de aire comprimido, con seguimiento en el Energy Saving Services Portal (fugas, medidas correctivas y ahorro de CO₂e). Se complementa con el módulo MSE6, los generadores de vacío OVEM y Smart Switching Lite (VTUX).",
+     "cifras": [
+      [
+       "hasta 90 %",
+       "menos aire comprimido con MSE6 y OVEM"
+      ],
+      [
+       "hasta 60 %",
+       "de ahorro de aire con Smart Switching Lite"
+      ],
+      [
+       "hasta 40 %",
+       "de mejora en tiempos de ciclo"
+      ],
+      [
+       "hasta 60 %",
+       "menos materiales y CO₂e en cilindros ADN-S, DSNU-S y DGRC"
+      ]
+     ],
+     "circular": "Componentes diseñados para la máxima vida útil mediante reparación y mantenimiento, con conceptos de reutilización y reciclaje.",
+     "nota": "A nivel corporativo, Festo redujo su huella de GEI (alcances 1, 2 y 3) en 1,7 % en 2025 frente a 2024.",
+     "contacto": {
+      "nombre": "José Maguiña",
+      "correo": "jose.maguina@festo.com",
+      "telefono": "993 515 109",
+      "direccion": "Lima, Perú",
+      "web": "https://www.festo.com/pe/es",
+      "web_etiqueta": "festo.com/pe"
+     }
+    },
+    {
+     "n": 4,
+     "estado": "ocupado",
+     "empresa": "AERZEN Perú",
+     "razon_social": "",
+     "logo": "img/logo-aerzen.png",
+     "imagenes": [],
+     "industria": "Saneamiento municipal",
+     "sector": "Comercial industrial",
+     "tecnologias": [
+      "Turbosopladores AT300",
+      "Aire libre de aceite"
+     ],
+     "titulo": "30 % de ahorro energético con turbosopladores AERZEN en Ventanilla",
+     "lugar": "PTAR · Ventanilla, Callao",
+     "reto": "Reducir el consumo eléctrico de la aireación en una PTAR de Ventanilla, con aire libre de aceite y alta disponibilidad.",
+     "solucion": "Seis turbosopladores AT300 de AERZEN, empresa alemana con más de 150 años fabricando sopladores, compresores y turbosopladores para minería, cemento y cal, agua y alimentos.",
+     "cifras": [
+      [
+       "30 %",
+       "menos consumo eléctrico (kW) gracias a la técnica turbo"
+      ],
+      [
+       "6",
+       "turbosopladores AT300 en operación"
+      ],
+      [
+       "150+",
+       "años de trayectoria industrial"
+      ],
+      [
+       "0",
+       "aceite en el suministro de aire"
+      ]
+     ],
+     "circular": "Menor consumo energético y menor espacio ocupado en el tratamiento de agua, lo que favorece el reúso del agua tratada.",
+     "nota": "",
+     "contacto": {
+      "nombre": "Alejandro Moncayo Palacios",
+      "correo": "alejandro.moncayo@aerzen.com",
+      "telefono": "943 488 898",
+      "direccion": "Megacentro Lurín, km 29.5, Lurín, Lima",
+      "web": "https://www.aerzen.com/company/worldwide/company-profile-aerzen-peru",
+      "web_etiqueta": "aerzen.com"
+     }
+    },
+    {
+     "n": 5,
+     "estado": "ocupado",
+     "empresa": "Winterhalter",
+     "razon_social": "",
+     "logo": "img/logo-winterhalter.svg",
+     "imagenes": [],
+     "industria": "Alimentos y catering",
+     "sector": "Equipamiento de lavado industrial",
+     "tecnologias": [
+      "Lavado industrial de vajilla",
+      "Reducción de huella hídrica"
+     ],
+     "titulo": "Menor huella hídrica. Mayor eficiencia operativa.",
+     "lugar": "Comedor institucional · 900 comensales/día · 3 servicios · lunes a sábado",
+     "reto": "Un comedor institucional con servicio continuo, picos de operación y dificultades de suministro de agua. Según la FAO, cerca del 70 % del agua dulce del mundo se usa en las operaciones de alimentos.",
+     "solucion": "Equipos de lavado industrial Winterhalter en lugar del lavado manual, con menor consumo de agua, energía y químicos de higienización.",
+     "cifras": [
+      [
+       "84 %",
+       "menos consumo total de agua (224 m³)"
+      ],
+      [
+       "15–20 %",
+       "menos consumo energético"
+      ],
+      [
+       "40 %",
+       "menos químicos de higienización y desinfección"
+      ],
+      [
+       "~40 %",
+       "de optimización en tiempos y movimientos"
+      ],
+      [
+       "80 %",
+       "de ahorro de agua frente al lavado manual"
+      ]
+     ],
+     "circular": "Al usar menos químicos mejora la calidad del agua residual que sale de la cocina.",
+     "nota": "",
+     "contacto": {
+      "nombre": "Liliana Omaña Sánchez",
+      "correo": "liliana.omana@winterhalter.pe",
+      "telefono": "+51 993 533 309",
+      "direccion": "Av. Camino Real 348, Torre Pilar, of. 703, San Isidro, Lima",
+      "web": "https://winterhalter.pe",
+      "web_etiqueta": "winterhalter.pe"
+     }
+    },
+    {
+     "n": 6,
+     "estado": "ocupado",
+     "empresa": "Kärcher Futuretech",
+     "razon_social": "Kärcher Futuretech GmbH",
+     "logo": "img/karcher-futuretech-logo.jpg",
+     "imagenes": [
+      {
+       "src": "img/karcher-wtc5000uf.jpg",
+       "pie": "Unidad móvil de ultrafiltración WTC 5000 UF"
+      }
+     ],
+     "industria": "Gestión de desastres",
+     "sector": "Sistemas móviles de infraestructura y respuesta ante desastres",
+     "tecnologias": [
+      "Ultrafiltración sin químicos",
+      "Agua potable móvil"
+     ],
+     "titulo": "Agua potable móvil para emergencias y desastres: ciclón Idai, Mozambique",
+     "lugar": "Ciclón Idai · Mozambique, marzo de 2019 · despliegue de THW",
+     "reto": "Las inundaciones del ciclón Idai dañaron la infraestructura y contaminaron pozos y fuentes de agua dulce con turbidez, escombros y patógenos. La población necesitaba agua potable segura de inmediato.",
+     "solucion": "La Agencia Federal Alemana de Ayuda Técnica (THW) desplegó una unidad móvil WTC 5000 UF. La ultrafiltración elimina partículas, microorganismos y virus a partir de fuentes locales, y su diseño modular permite llegar donde las vías están destruidas.",
+     "cifras": [
+      [
+       "5 000 L/h",
+       "de agua potable por unidad"
+      ],
+      [
+       "120 000 L",
+       "al día, para unas 17 000 personas"
+      ],
+      [
+       "~800 W",
+       "de consumo energético medio"
+      ],
+      [
+       "0",
+       "productos químicos en la filtración"
+      ]
+     ],
+     "circular": "Producción descentralizada con agua local: menos logística, menos envases y menos costo de abastecimiento externo.",
+     "nota": "Relevancia para el Perú: los efectos del ciclón Idai son comparables a los del Fenómeno El Niño. Kärcher Futuretech ya apoyó a la población peruana con cocinas tácticas TFK 250 tras las inundaciones de 2017.",
+     "contacto": {
+      "nombre": "Patrick Hennig",
+      "correo": "patrickperu@yahoo.com",
+      "telefono": "+51 950 236 889",
+      "direccion": "Alemania",
+      "web": "https://www.karcher-futuretech.com",
+      "web_etiqueta": "karcher-futuretech.com"
+     }
+    },
+    {
+     "n": 7,
+     "estado": "ocupado",
+     "empresa": "OZ Perú Group",
+     "razon_social": "OZ PERU GROUP S.A.C. · representa a WTW / Xylem Analytics (Alemania)",
+     "logo": null,
+     "imagenes": [],
+     "industria": "Minería",
+     "sector": "Minería, pesca, industria, farmacéutica y universidades",
+     "tecnologias": [
+      "Sensores en línea IQ SensorNet",
+      "Control de procesos en PTAR"
+     ],
+     "titulo": "Sensores WTW aprobados para la nueva PTAR de Ilo",
+     "lugar": "Nueva PTAR de Ilo · Southern Peru Copper Corporation · en construcción",
+     "reto": "Operar plantas de tratamiento de aguas residuales e industriales sin sobreconsumo de energía en la aireación ni de reactivos para ajustar el pH, y sin malos olores.",
+     "solucion": "Sistemas IQ SensorNet de WTW con sensores en línea 24/7, de bajo consumo y larga vida útil, adaptados a cada planta. Fueron aprobados para la nueva PTAR de Ilo.",
+     "cifras": [
+      [
+       "24/7",
+       "monitoreo en línea de parámetros de proceso"
+      ],
+      [
+       "O₂ disuelto",
+       "aireadores que se encienden solo cuando hace falta"
+      ],
+      [
+       "pH",
+       "dosificación sin exceso de soda o ácido"
+      ],
+      [
+       "Bajo consumo",
+       "y larga vida útil de módulos, sensores y cables"
+      ]
+     ],
+     "circular": "La medición continua permite usar solo la energía y los reactivos que el proceso necesita.",
+     "nota": "",
+     "contacto": {
+      "nombre": "Luis Adolfo Coz Pancorbo",
+      "correo": "adolfo.coz@oz-peru.com",
+      "telefono": "934 992 031",
+      "direccion": "Av. del Ejército 250, of. 207, Miraflores, Lima",
+      "web": "https://www.oz-peru.com",
+      "web_etiqueta": "oz-peru.com"
+     }
+    },
+    {
+     "n": 8,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 9,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 10,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 11,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 12,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 13,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 14,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 15,
+     "estado": "en_construccion"
+    }
+   ],
+   "bandera_dir": "h",
+   "bandera_pesos": [
+    1,
+    1,
+    1
+   ],
+   "camara": {
+    "nombre": "Cámara de Comercio e Industria Peruano-Alemana (AHK Perú)",
+    "logo": "img/partner-ahk.png"
+   }
+  },
+  {
+   "id": "es",
+   "slug": "espana",
+   "nombre": "España",
+   "bandera": [
+    "#aa151b",
+    "#f1bf00",
+    "#aa151b"
+   ],
+   "estado": "en preparación",
+   "stands": [
+    {
+     "n": 1,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 2,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 3,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 4,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 5,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 6,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 7,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 8,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 9,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 10,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 11,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 12,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 13,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 14,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 15,
+     "estado": "en_construccion"
+    }
+   ],
+   "bandera_dir": "h",
+   "bandera_pesos": [
+    1,
+    2,
+    1
+   ],
+   "camara": {
+    "nombre": "Cámara Oficial de Comercio de España en el Perú",
+    "logo": "img/camara-espana.png"
+   }
+  },
+  {
+   "id": "it",
+   "slug": "italia",
+   "nombre": "Italia",
+   "bandera": [
+    "#009246",
+    "#ffffff",
+    "#ce2b37"
+   ],
+   "estado": "en preparación",
+   "stands": [
+    {
+     "n": 1,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 2,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 3,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 4,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 5,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 6,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 7,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 8,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 9,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 10,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 11,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 12,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 13,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 14,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 15,
+     "estado": "en_construccion"
+    }
+   ],
+   "bandera_dir": "v",
+   "bandera_pesos": [
+    1,
+    1,
+    1
+   ],
+   "camara": {
+    "nombre": "Cámara de Comercio Italiana del Perú",
+    "logo": "img/camara-italia.png"
+   }
+  }
+ ]
+}
