@@ -612,6 +612,84 @@
     "nombre": "Cámara de Comercio Italiana del Perú",
     "logo": "img/camara-italia.png"
    }
+  },
+  {
+   "id": "ch",
+   "slug": "suiza",
+   "nombre": "Suiza",
+   "bandera": [
+    "#d52b1e",
+    "#ffffff"
+   ],
+   "bandera_dir": "cross",
+   "bandera_pesos": [
+    1,
+    1
+   ],
+   "estado": "en preparación",
+   "stands": [
+    {
+     "n": 1,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 2,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 3,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 4,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 5,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 6,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 7,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 8,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 9,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 10,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 11,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 12,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 13,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 14,
+     "estado": "en_construccion"
+    },
+    {
+     "n": 15,
+     "estado": "en_construccion"
+    }
+   ],
+   "camara": null
   }
  ]
 }
