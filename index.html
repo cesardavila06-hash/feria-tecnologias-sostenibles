@@ -488,7 +488,7 @@ function toast(msg){ const t = $('#toast'); t.textContent = msg; t.hidden = fals
 
 /* ---------- motor 3D ---------- */
 const G = (() => {
-  let R, scene, cam, ctl, world, clock, pick = [], flags = [], hover = null, fly = null, mode = null, ok = false, matCache = {};
+  let R, scene, cam, ctl, world, clock, pick = [], flags = [], hover = null, fly = null, mode = null, ok = false, matCache = {}, spinners = [], flows = [];
   const stage = $('#stage');
   const disposables = [];
   const track = o => (disposables.push(o), o);
@@ -599,7 +599,7 @@ const G = (() => {
     const t = texFn([w/uvScale, L/uvScale]); const m = new THREE.Mesh(track(new THREE.PlaneGeometry(w, L)), track(new THREE.MeshStandardMaterial({ map:t, roughness:.95 })));
     m.rotation.x = -Math.PI/2; m.rotation.z = Math.atan2(-dx, -dz); m.position.set((a.x+b.x)/2, y, (a.z+b.z)/2); m.receiveShadow = true; return m; }
 
-  function clear(){ if (world) scene.remove(world); disposables.splice(0).forEach(d => d.dispose && d.dispose()); pick = []; flags = []; hover = null; matCache = {}; seed = 7;
+  function clear(){ if (world) scene.remove(world); disposables.splice(0).forEach(d => d.dispose && d.dispose()); pick = []; flags = []; spinners = []; flows = []; hover = null; matCache = {}; seed = 7;
     UNIT = track(new THREE.BoxGeometry(1, 1, 1)); world = new THREE.Group(); scene.add(world); }
 
   /* ---------- PLAZA: camino que lleva a los pabellones ---------- */
@@ -620,6 +620,11 @@ const G = (() => {
     for (let i = 0; i < 18; i++) { const a = i / 18 * Math.PI * 2 + rnd()*.2, r = 120 + rnd()*30, s = 22 + rnd()*20;
       const h = new THREE.Mesh(track(new THREE.SphereGeometry(s, 20, 12)), MC(['#9fb38a','#a9b98f','#93a883','#b2bb92'][i%4], { roughness:1 }));
       h.scale.y = .32 + rnd()*.15; h.position.set(Math.sin(a)*r, -2, Math.cos(a)*r - 10); world.add(h); }
+    // tecnologías al fondo: parque eólico y central hidroeléctrica
+    [-74, -52, -30, 26, 44, 62, 80].forEach((deg, k) => { const a = deg * Math.PI/180, r = 102 + (k % 3) * 10, x = J.x + Math.sin(a) * r, z = J.z - Math.cos(a) * r;
+      const tb = turbine(.8 + (k % 2) * .15); tb.position.set(x, -.3, z); tb.rotation.y = Math.atan2(J.x - x, J.z - z); world.add(tb); });
+    { const a = -8 * Math.PI/180, r = 122, x = J.x + Math.sin(a) * r, z = J.z - Math.cos(a) * r;
+      const hy = hydro(); hy.position.set(x, 0, z); hy.rotation.y = Math.atan2(J.x - x, J.z - z); world.add(hy); }
     // camino principal con bordillos
     const A = { x:0, z:70 }, B = { x:J.x, z:J.z + 8 };
     world.add(strip(A, B, 4.6, paveTex));
@@ -696,10 +701,12 @@ const G = (() => {
     }
     for (let z = -PD/2 + .2, i = 0; z < PD/2 - .1; z += .25, i++) { const h = 4.5, t = (z + PD/2) / PD;
       const sl = ubox(.12, h, .17, MC(slatColor(p, t, (rnd() - .5) * 14))); sl.position.set(PL + .09, h/2, z); g.add(sl); }
-    // escalera sobre la cubierta inclinada, con barandas
-    for (let x = .5; x < 5.4; x += .46) { const top = roofY(x + .46) + .02; const st = ubox(.46, .5, 2.4, wood); st.position.set(x + .23, top - .25, PD/2 - 1.75); g.add(st); }
-    [PD/2 - .5, PD/2 - 3].forEach(z => { const a = new THREE.Vector3(.4, roofY(.4) + 1, z), b = new THREE.Vector3(5.5, roofY(5.5) + 1, z);
-      g.add(cyl(a, b, .045, MC('#8a7660'))); for (let k = 0; k <= 5; k++) { const x = .4 + k * 1.02; g.add(cyl(new THREE.Vector3(x, roofY(x), z), new THREE.Vector3(x, roofY(x) + 1, z), .035, MC('#8a7660'))); } });
+    // paneles solares pequeños sobre la cubierta inclinada
+    const solar = track(new THREE.MeshStandardMaterial({ map:solarTex(), roughness:.3, metalness:.35 })), frameM = MC('#c9ccd1', { roughness:.45, metalness:.4 });
+    for (let x = .95; x < 5.3; x += 1.12) { const ang = Math.atan2(roofY(x + .3) - roofY(x - .3), .6);
+      [-2.1, -.7, .7, 2.1].forEach(z => { const pnl = box(.98, .05, 1.22, [frameM, frameM, solar, frameM, frameM, frameM]);
+        pnl.position.set(x, roofY(x) + .3, z); pnl.rotation.z = ang + .14; g.add(pnl);
+        const leg = ubox(.05, .32, .05, frameM); leg.position.set(x, roofY(x) + .13, z); g.add(leg); }); }
     // terraza de madera, jardinera con árboles en flor, letrero y mástil
     const deck = ubox(PL*2 + 2.6, .24, 4.6, deckWood); deck.position.set(0, .12, PD/2 + 2.3); g.add(deck);
     const planter = ubox(4.4, .62, 1.5, MC('#d9cdbb')); planter.position.set(2.4, .24 + .31, PD/2 + 3.2); g.add(planter);
@@ -724,6 +731,42 @@ const G = (() => {
     g.userData.slug = p.slug;
     return g;
   }
+  function solarTex(){ return tex(256, 320, (g, W, H) => { const gr = g.createLinearGradient(0,0,W,H); gr.addColorStop(0,'#2d4a73'); gr.addColorStop(1,'#1d324f'); g.fillStyle = gr; g.fillRect(0,0,W,H);
+      g.strokeStyle = 'rgba(190,210,235,.55)'; g.lineWidth = 3; for (let x = 0; x <= W; x += W/4) { g.beginPath(); g.moveTo(x,0); g.lineTo(x,H); g.stroke(); } for (let y = 0; y <= H; y += H/6) { g.beginPath(); g.moveTo(0,y); g.lineTo(W,y); g.stroke(); }
+      g.fillStyle = 'rgba(255,255,255,.08)'; g.beginPath(); g.moveTo(0,0); g.lineTo(W*.6,0); g.lineTo(0,H*.5); g.fill(); }); }
+  function turbine(s){ const g = new THREE.Group(), white = MC('#f3f0ea', { roughness:.5 });
+    const tower = new THREE.Mesh(track(new THREE.CylinderGeometry(.32*s, .7*s, 22*s, 16)), white); tower.position.y = 11*s; tower.castShadow = true; g.add(tower);
+    const nac = ubox(1.1*s, 1.1*s, 2.6*s, white); nac.position.set(0, 22.4*s, -.2*s); g.add(nac);
+    const rotor = new THREE.Group(); rotor.position.set(0, 22.4*s, 1.35*s);
+    const hub = new THREE.Mesh(track(new THREE.SphereGeometry(.55*s, 16, 12)), white); rotor.add(hub);
+    for (let k = 0; k < 3; k++) { const arm = new THREE.Group(); arm.rotation.z = k * Math.PI * 2 / 3; const b = ubox(.6*s, 10.5*s, .14*s, white); b.position.y = 5.5*s; arm.add(b); rotor.add(arm); }
+    rotor.rotation.z = rnd() * 6; rotor.userData.speed = .7 + rnd() * .5; spinners.push(rotor); g.add(rotor); return g; }
+  function flowTex(base, streak){ const t = tex(128, 256, (g, W, H) => { g.fillStyle = base; g.fillRect(0,0,W,H);
+      for (let i = 0; i < 70; i++) { g.fillStyle = streak; g.globalAlpha = .25 + rnd()*.5; g.fillRect(rnd()*W, rnd()*H, 2 + rnd()*3, 18 + rnd()*40); } g.globalAlpha = 1; }, [1, 1]); return t; }
+  function hydro(){ const g = new THREE.Group(), conc = MC('#d6d0c5', { roughness:.9 }), conc2 = MC('#c4bdb1', { roughness:.9 });
+    // laderas a los lados de la represa
+    [-27, 27].forEach(x => { const h = new THREE.Mesh(track(new THREE.SphereGeometry(20, 20, 12)), MC('#9fb38a', { roughness:1 })); h.scale.set(1, .85, 1.2); h.position.set(x, -3, -6); g.add(h); });
+    // muro de la represa
+    const wall = ubox(38, 18, 4, conc); wall.position.set(0, 9, 0); g.add(wall);
+    const crest = ubox(39, .8, 5, conc2); crest.position.set(0, 18.4, 0); g.add(crest);
+    for (let x = -16; x <= 16; x += 4) { const b = ubox(.8, 18, 1.2, conc2); b.position.set(x, 9, 2.4); g.add(b); }
+    // embalse
+    const res = new THREE.Mesh(track(new THREE.PlaneGeometry(46, 40)), M('#8fb6c6', { roughness:.15, metalness:.15 })); res.rotation.x = -Math.PI/2; res.position.set(0, 16.8, -22); g.add(res);
+    // aliviaderos con caída de agua animada
+    [-8, 0, 8].forEach(x => { const t = flowTex('#cfe3ea', '#ffffff'); t.repeat.set(1, 2); flows.push({ t, v:1.6 });
+      const sp = new THREE.Mesh(track(new THREE.PlaneGeometry(4, 17.6)), track(new THREE.MeshStandardMaterial({ map:t, roughness:.2, transparent:true, opacity:.92 }))); sp.position.set(x, 9, 3.05); g.add(sp); });
+    // casa de máquinas y tuberías forzadas
+    const ph = ubox(16, 5, 7, MC('#e8ddcc')); ph.position.set(0, 2.5, 8.6); g.add(ph);
+    const roof = ubox(16.8, .5, 7.8, MC('#b8694b')); roof.position.set(0, 5.25, 8.6); g.add(roof);
+    for (let x = -6; x <= 6; x += 4) { const w = ubox(1.6, 1.8, .1, MC('#a9c3d0', { roughness:.2 })); w.position.set(x, 3, 12.12); g.add(w); }
+    [-12, 12].forEach(x => g.add(cyl(new THREE.Vector3(x, 16, 1), new THREE.Vector3(x * .9, 2.5, 7), .7, MC('#8a7660', { roughness:.5, metalness:.3 }))));
+    // río de descarga hacia el valle
+    const rt = flowTex('#9fc2cf', '#e9f4f6'); rt.repeat.set(1, 6); flows.push({ t:rt, v:.5 });
+    const river = new THREE.Mesh(track(new THREE.PlaneGeometry(7, 60)), track(new THREE.MeshStandardMaterial({ map:rt, roughness:.2 }))); river.rotation.x = -Math.PI/2; river.position.set(14, .05, 30); river.rotation.z = .5; g.add(river);
+    // torres de alta tensión
+    [[-30, 18], [-46, 30]].forEach(([x, z]) => { const tw = ubox(.5, 14, .5, MC('#9a9a96')); tw.position.set(x, 7, z); g.add(tw); const arm = ubox(6, .3, .3, MC('#9a9a96')); arm.position.set(x, 13, z); g.add(arm); });
+    g.traverse(o => { if (o.isMesh) o.castShadow = false; });
+    return g; }
   function blossomTree(p, k){ const g = new THREE.Group(), bark = MC('#7b6551');
     g.add(cyl(new THREE.Vector3(0,0,0), new THREE.Vector3(0,1.5,0), .06, bark));
     for (let b = 0; b < 5; b++) { const a = b / 5 * Math.PI * 2 + k, h = .8 + b * .14; const end = new THREE.Vector3(Math.cos(a) * .55, h + .55, Math.sin(a) * .55);
@@ -810,6 +853,7 @@ const G = (() => {
     if (fly) { fly.t += Math.min(raw, .25) / fly.dur; const k = Math.min(fly.t, 1), e = k < .5 ? 4*k*k*k : 1 - Math.pow(-2*k + 2, 3) / 2;
       cam.position.lerpVectors(fly.p0, fly.p1, e); ctl.target.lerpVectors(fly.t0, fly.t1, e); if (k >= 1) { const d = fly.done; fly = null; d && d(); } }
     flags.forEach(f => { const a = f.geometry.attributes.position, b = f.userData.base; for (let i = 0; i < a.count; i++) { const x = b[i*3]; a.array[i*3+2] = Math.sin(x * 2.2 - t * 3.2) * .12 * (x / 2.7); } a.needsUpdate = true; });
+    spinners.forEach(r => r.rotation.z += dt * r.userData.speed); flows.forEach(f => f.t.offset.y += dt * f.v * .4);
     world && world.children.forEach(function walk(o){ if (o.userData.spin) o.rotation.y += dt * .5;
       if (o.userData.base !== undefined && o.userData.stand) { const target = o.userData.base + (o === hover ? .35 : 0) + Math.sin(t * 1.4 + o.userData.stand.n) * .05; o.position.y += (target - o.position.y) * .15; if (o === hover) o.rotation.y += dt * .6; }
       if (mode === 'pav' && o.children.length) o.children.forEach(walk); });
