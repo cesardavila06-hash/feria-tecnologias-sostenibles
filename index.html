@@ -508,7 +508,7 @@ const G = (() => {
     stage.prepend(R.domElement);
     scene = new THREE.Scene();
     scene.background = skyTex();
-    scene.fog = new THREE.Fog(0xe9ded0, 70, 170);
+    scene.fog = new THREE.Fog(0xe9ded0, 120, 260);
     cam = new THREE.PerspectiveCamera(42, 1, 0.1, 400);
     ctl = new THREE.OrbitControls(cam, R.domElement);
     ctl.enableDamping = true; ctl.dampingFactor = .08; ctl.maxPolarAngle = Math.PI * .46; ctl.minDistance = 4; ctl.maxDistance = 120;
@@ -651,12 +651,14 @@ const G = (() => {
       [-1, 1].forEach(sg => { const l = lamp(); l.position.set(3.2 * sg, 0, z); world.add(l);
         const bn = bench(); bn.position.set(3.6 * sg, 0, z + 4); bn.rotation.y = sg > 0 ? -Math.PI/2 : Math.PI/2; world.add(bn);
         world.add(flowerBed(2.95 * sg, z + 2)); world.add(flowerBed(2.95 * sg, z + 6));
-        if (z < 50) { const t = tree(.85 + rnd()*.3); t.position.set(8.5 * sg + (rnd()-.5)*1.5, 0, z + rnd()*3); world.add(t); } });
+        });
     }
     // bosque alrededor
     let placed = 0, tries = 0;
-    while (placed < 70 && tries < 900) { tries++; const a = rnd() * Math.PI * 2, r = 14 + rnd() * 60, x = J.x + Math.sin(a) * r, z = J.z - Math.cos(a) * r * .9;
-      if (nearPath(x, z, spots)) continue; const t = tree(.9 + rnd()*.8); t.position.set(x, 0, z); t.rotation.y = rnd()*6; world.add(t); placed++; }
+    // solo árboles de fondo, lejos de los pabellones, para no tapar edificios ni carteles
+    while (placed < 55 && tries < 1500) { tries++; const a = rnd() * Math.PI * 2, r = RAD + 16 + rnd() * 40, x = J.x + Math.sin(a) * r, z = J.z - Math.cos(a) * r;
+      if (z > J.z + 10 || nearPath(x, z, spots) || spots.some(sp => Math.hypot(x - sp.x, z - sp.z) < 20)) continue;
+      const t = tree(.8 + rnd()*.35); t.position.set(x, 0, z); t.rotation.y = rnd()*6; world.add(t); placed++; }
     for (let i = 0; i < 40; i++) { const a = rnd() * Math.PI * 2, r = 12 + rnd() * 40, x = J.x + Math.sin(a) * r, z = J.z - Math.cos(a) * r;
       if (nearPath(x, z, spots)) continue; const sh = new THREE.Mesh(track(new THREE.IcosahedronGeometry(.7 + rnd()*.5, 1)), MC(['#93a87b','#a8b98d','#8c9f76'][i%3], { roughness:1, flatShading:true }));
       sh.position.set(x, .4, z); sh.scale.y = .7; sh.castShadow = true; world.add(sh); }
