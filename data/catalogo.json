@@ -20,6 +20,10 @@
   {
    "nombre": "Cámara de Comercio Italiana del Perú",
    "logo": "img/camara-italia.png"
+  },
+  {
+   "nombre": "Finlandia Circular",
+   "logo": "img/finlandia-circular.png"
   }
  ],
  "_plantilla_stand": {
@@ -767,7 +771,10 @@
      "estado": "en_construccion"
     }
    ],
-   "camara": null
+   "camara": {
+    "nombre": "Finlandia Circular",
+    "logo": "img/finlandia-circular.png"
+   }
   }
  ]
 }
