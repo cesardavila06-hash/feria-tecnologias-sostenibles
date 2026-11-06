@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Feria virtual en 3D: catálogo de casos de éxito de tecnologías industriales sostenibles por pabellones (Alemania, España, Italia y Suiza).">
+<meta name="description" content="Feria virtual en 3D: catálogo de casos de éxito de tecnologías industriales sostenibles por pabellones (Alemania, España, Italia, Suiza y Finlandia).">
 <meta property="og:title" content="Feria de Tecnologías Sostenibles">
 <meta property="og:description" content="Recorre los pabellones y conoce cómo cada empresa resolvió problemas reales en la industria.">
 <style>[hidden]{display:none!important}html,body{margin:0}img{max-width:100%}</style>
@@ -279,6 +279,7 @@ const S = { data:null, view:'plaza', pav:null, q:'', ind:'todas', imgs:{}, homeS
 
 /* ---------- utilidades ---------- */
 function flagHTML(p){
+  if (p.bandera_dir === 'nordic') return `<span class="flag" aria-hidden="true"><svg viewBox="0 0 18 11" preserveAspectRatio="none"><rect width="18" height="11" fill="${p.bandera[0]}"/><rect x="5" width="3" height="11" fill="${p.bandera[1]}"/><rect y="4" width="18" height="3" fill="${p.bandera[1]}"/></svg></span>`;
   if (p.bandera_dir === 'cross') return `<span class="flag" aria-hidden="true"><svg viewBox="0 0 48 32" preserveAspectRatio="none"><rect width="48" height="32" fill="${p.bandera[0]}"/><path d="M21 6h6v7h7v6h-7v7h-6v-7h-7v-6h7z" fill="${p.bandera[1]}"/></svg></span>`;
   const dir = p.bandera_dir || 'h', w = p.bandera_pesos || [1,1,1];
   return `<span class="flag ${dir}" aria-hidden="true">${p.bandera.map((c,i)=>`<i style="background:${c};flex:${w[i]}"></i>`).join('')}</span>`;
@@ -289,6 +290,7 @@ function rgbToHex(r,g,b){ return '#' + [r,g,b].map(v => Math.max(0,Math.min(255,
 function slatStops(p){
   let c = p.bandera.slice();
   if (p.bandera_dir === 'cross') c = [c[0], c[1], c[0]];
+  if (p.bandera_dir === 'nordic') c = [c[1], c[0], c[1]];
   // suavizar el negro alemán y aclarar un poco todo hacia el pastel
   return c.map(h => { let [r,g,b] = hexToRgb(h); if (r+g+b < 120) [r,g,b] = [74,66,60]; return [r*.86+255*.14, g*.86+255*.14, b*.86+255*.14]; });
 }
@@ -552,6 +554,7 @@ const G = (() => {
   function wrap(g, text, maxW){ const words = String(text).split(' '); const lines = []; let line = '';
     for (const w of words){ const t = line ? line + ' ' + w : w; if (g.measureText(t).width > maxW && line){ lines.push(line); line = w; } else line = t; } if (line) lines.push(line); return lines; }
   function drawFlag(g, p, x, y, w, h){
+    if (p.bandera_dir === 'nordic') { g.fillStyle = p.bandera[0]; g.fillRect(x, y, w, h); g.fillStyle = p.bandera[1]; g.fillRect(x + w*5/18, y, w*3/18, h); g.fillRect(x, y + h*4/11, w, h*3/11); return; }
     if (p.bandera_dir === 'cross') { g.fillStyle = p.bandera[0]; g.fillRect(x, y, w, h); const s = Math.min(w, h), cx = x + w/2, cy = y + h/2, a = s*6/32, l = s*20/32;
       g.fillStyle = p.bandera[1]; g.fillRect(cx - a/2, cy - l/2, a, l); g.fillRect(cx - l/2, cy - a/2, l, a); return; }
     const ws = p.bandera_pesos || [1,1,1], sum = ws.reduce((a,b)=>a+b,0); let o = 0;
@@ -603,8 +606,8 @@ const G = (() => {
     UNIT = track(new THREE.BoxGeometry(1, 1, 1)); world = new THREE.Group(); scene.add(world); }
 
   /* ---------- PLAZA: camino que lleva a los pabellones ---------- */
-  const J = { x:0, z:6 }, RAD = 31;
-  function pavSpots(n){ const span = n > 3 ? 114 : 80; return Array.from({length:n}, (_, i) => { const a = (-span/2 + span * (n > 1 ? i/(n-1) : .5)) * Math.PI/180;
+  const J = { x:0, z:6 }; let RAD = 31;
+  function pavSpots(n){ RAD = n > 4 ? 38 : 31; const span = n > 4 ? 128 : n > 3 ? 114 : 80; return Array.from({length:n}, (_, i) => { const a = (-span/2 + span * (n > 1 ? i/(n-1) : .5)) * Math.PI/180;
     return { a, x: J.x + Math.sin(a) * RAD, z: J.z - Math.cos(a) * RAD }; }); }
   function nearPath(x, z, spots){
     const dSeg = (ax, az, bx, bz) => { const vx = bx-ax, vz = bz-az, t = Math.max(0, Math.min(1, ((x-ax)*vx + (z-az)*vz) / (vx*vx + vz*vz))); return Math.hypot(x - (ax + vx*t), z - (az + vz*t)); };
@@ -820,7 +823,7 @@ const G = (() => {
 
   /* cámara */
   const views = { plaza:{ pos:[0, 21, 47], tgt:[0, 2, -12] }, pav:{ pos:[0, 14, 21], tgt:[0, .5, -2] } };
-  function fit(v){ const a = cam.aspect, k = Math.min(2.6, Math.max(1, 1.75 / a)); return { pos: new THREE.Vector3(v.pos[0], v.pos[1]*k, v.pos[2]*k), tgt: new THREE.Vector3(...v.tgt) }; }
+  function fit(v){ const a = cam.aspect, k = Math.min(2.6, Math.max(1, 1.75 / a)) * (mode === 'plaza' && RAD > 31 ? 1.18 : 1); return { pos: new THREE.Vector3(v.pos[0], v.pos[1]*k, v.pos[2]*k), tgt: new THREE.Vector3(...v.tgt) }; }
   function flyTo(pos, tgt, dur=1.2, done){ if (RM) { cam.position.copy(pos); ctl.target.copy(tgt); done && done(); return; }
     fly = { p0: cam.position.clone(), t0: ctl.target.clone(), p1: pos, t1: tgt, t:0, dur, done }; }
   function overview(){ const v = fit(views[mode]); flyTo(v.pos, v.tgt, 1); }
