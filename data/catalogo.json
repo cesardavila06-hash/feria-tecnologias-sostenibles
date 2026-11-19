@@ -418,26 +418,6 @@
     {
      "n": 10,
      "estado": "en_construccion"
-    },
-    {
-     "n": 11,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 12,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 13,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 15,
-     "estado": "en_construccion"
     }
    ],
    "bandera_dir": "h",
@@ -501,26 +481,6 @@
     {
      "n": 10,
      "estado": "en_construccion"
-    },
-    {
-     "n": 11,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 12,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 13,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 15,
-     "estado": "en_construccion"
     }
    ],
    "bandera_dir": "h",
@@ -532,89 +492,6 @@
    "camara": {
     "nombre": "Cámara Oficial de Comercio de España en el Perú",
     "logo": "img/camara-espana.png"
-   }
-  },
-  {
-   "id": "it",
-   "slug": "italia",
-   "nombre": "Italia",
-   "bandera": [
-    "#009246",
-    "#ffffff",
-    "#ce2b37"
-   ],
-   "estado": "en preparación",
-   "stands": [
-    {
-     "n": 1,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 2,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 3,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 4,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 5,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 6,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 7,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 8,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 9,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 10,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 11,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 12,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 13,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 15,
-     "estado": "en_construccion"
-    }
-   ],
-   "bandera_dir": "v",
-   "bandera_pesos": [
-    1,
-    1,
-    1
-   ],
-   "camara": {
-    "nombre": "Cámara de Comercio Italiana del Perú",
-    "logo": "img/camara-italia.png"
    }
   },
   {
@@ -670,26 +547,6 @@
     },
     {
      "n": 10,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 11,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 12,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 13,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 15,
      "estado": "en_construccion"
     }
    ],
@@ -748,26 +605,6 @@
     },
     {
      "n": 10,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 11,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 12,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 13,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 15,
      "estado": "en_construccion"
     }
    ],
