@@ -443,11 +443,27 @@
      "estado": "ocupado",
      "empresa": "Grupo Enhol",
      "razon_social": "Empresa española · en el Perú: Arequipa",
-     "logo": null,
+     "logo": "img/logo-enhol.png",
      "imagenes": [
       {
        "src": "img/enhol-illa.jpg",
        "pie": "Central Solar Fotovoltaica ILLA, Arequipa (agosto de 2026)"
+      },
+      {
+       "src": "img/enhol-illa-2.jpg",
+       "pie": "Filas de módulos fotovoltaicos de la central ILLA"
+      },
+      {
+       "src": "img/enhol-illa-3.jpg",
+       "pie": "Vista aérea de la central ILLA"
+      },
+      {
+       "src": "img/enhol-illa-4.jpg",
+       "pie": "Equipo en obra en la central ILLA"
+      },
+      {
+       "src": "img/enhol-illa-5.jpg",
+       "pie": "Módulos fotovoltaicos instalados en ILLA"
       }
      ],
      "industria": "Energía solar",
