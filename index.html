@@ -136,6 +136,7 @@ button.pill{font:inherit;font-family:var(--display);font-weight:700;font-size:13
 .kpi{margin-top:auto;padding-top:10px;display:flex;align-items:baseline;gap:8px;border-top:1px solid var(--line)}
 .kpi b{font-family:var(--display);font-stretch:85%;font-weight:900;font-size:24px;color:var(--terra);white-space:nowrap}
 .kpi span{font-size:12.5px;color:var(--muted);line-height:1.3}
+.card.prep .card-body p{color:var(--muted)}
 .empty-msg{color:var(--muted);text-align:center;padding:24px}
 .hazard{height:10px;background:repeating-linear-gradient(-45deg,#e3b44a 0 12px,#3a2e25 12px 24px)}
 .build-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
@@ -304,6 +305,8 @@ function slatColor(p, t, j=0){
   return rgbToHex(a[0]+(b[0]-a[0])*e + j, a[1]+(b[1]-a[1])*e + j, a[2]+(b[2]-a[2])*e + j);
 }
 const occupied = p => p.stands.filter(s => s.estado === 'ocupado');
+const building = p => p.stands.filter(s => s.estado === 'en_construccion');
+const preparing = p => p.stands.filter(s => s.estado === 'preparacion');
 const bySlug = slug => S.data.pabellones.find(p => p.slug === slug);
 const byId = id => S.data.pabellones.find(p => p.id === id);
 function logoHTML(s){
@@ -342,7 +345,7 @@ function renderSummary(){
   } else {
     const occ = occupied(S.pav), inds = new Set(occ.map(s => s.industria));
     el.innerHTML = occ.length
-      ? `<div><b>${S.pav.stands.length}</b><span>stands</span></div><div><b>${occ.length}</b><span>empresas</span></div><div><b>${inds.size}</b><span>industrias</span></div><div><b>${S.pav.stands.length - occ.length}</b><span>en construcción</span></div>`
+      ? `<div><b>${S.pav.stands.length}</b><span>stands</span></div><div><b>${occ.length}</b><span>empresas</span></div><div><b>${inds.size}</b><span>industrias</span></div><div><b>${building(S.pav).length}</b><span>en construcción</span></div>`
       : `<div><b>${S.pav.stands.length}</b><span>stands en construcción</span></div><div><b>0</b><span>empresas cargadas</span></div>`;
   }
 }
@@ -372,7 +375,8 @@ function renderBelow(){
       <div class="chips" role="group" aria-label="Filtrar por industria">${inds.map(i => `<button class="chip" id="ind-${esc(i).replace(/\s+/g,'-')}" data-i="${esc(i)}" aria-pressed="${S.ind===i}">${i==='todas'?'Todas las industrias':esc(i)}</button>`).join('')}</div>
     </div>
     <div class="grid" id="grid"></div>
-    ${p.stands.length > occ.length ? `<div class="sec-head" style="margin-top:10px"><h2 style="font-size:22px">Stands en construcción</h2><span class="muted">${p.stands.length - occ.length} espacios para nuevas empresas</span></div>${buildGrid(p, p.stands.filter(s => s.estado !== 'ocupado'))}` : ''}`;
+    ${preparing(p).length ? `<div class="sec-head" style="margin-top:10px"><h2 style="font-size:22px">Fichas en preparación</h2></div><div class="grid">${preparing(p).map(s => `<div class="card prep"><div class="logo-box"><span class="num">Stand ${s.n}</span>${logoHTML(s)}</div><div class="card-body"><h3>${esc(s.empresa)}</h3><p>La ficha de esta empresa estará disponible pronto.</p></div></div>`).join('')}</div>` : ''}
+    ${building(p).length ? `<div class="sec-head" style="margin-top:10px"><h2 style="font-size:22px">Stands en construcción</h2><span class="muted">${building(p).length} espacios para nuevas empresas</span></div>${buildGrid(p, building(p))}` : ''}`;
   $('#q').addEventListener('input', e => { S.q = e.target.value; renderGrid(); });
   el.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { S.ind = b.dataset.i; el.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', x===b)); renderGrid(); }));
   renderGrid();
@@ -569,7 +573,7 @@ const G = (() => {
     p.bandera.forEach((c,i) => { g.fillStyle = c; const f = ws[i]/sum;
       if ((p.bandera_dir||'h') === 'h') g.fillRect(x, y + o*h, w, f*h + 1); else g.fillRect(x + o*w, y, f*w + 1, h); o += f; }); }
   function logoFace(s){ return tex(512, 512, (g, W, H) => {
-    if (s.estado !== 'ocupado'){ g.fillStyle = '#4a3d33'; g.fillRect(0,0,W,H);
+    if (s.estado === 'en_construccion'){ g.fillStyle = '#4a3d33'; g.fillRect(0,0,W,H);
       const band = (y) => { g.save(); g.beginPath(); g.rect(0,y,W,70); g.clip(); g.fillStyle = '#e3b44a'; g.fillRect(0,y,W,70); g.fillStyle = '#3a2e25';
         for (let x = -80; x < W + 80; x += 56) { g.beginPath(); g.moveTo(x,y); g.lineTo(x+28,y); g.lineTo(x-42,y+70); g.lineTo(x-70,y+70); g.closePath(); g.fill(); } g.restore(); };
       band(0); band(H-70);
@@ -586,7 +590,7 @@ const G = (() => {
     g.fillStyle = '#ffffff'; g.textAlign = 'left'; g.font = '800 30px Archivo, Arial'; g.fillText(`STAND ${s.n}`, 26, H*.9 + 12);
     g.textAlign = 'right'; g.fillStyle = '#dfe7d6'; fitText(g, s.industria.toUpperCase(), W*.58, 24, 700); g.fillText(s.industria.toUpperCase(), W - 26, H*.9 + 10);
   }); }
-  function topFace(s){ return tex(256, 256, (g, W, H) => { g.fillStyle = s.estado === 'ocupado' ? '#9db58f' : '#e3b44a'; g.fillRect(0,0,W,H);
+  function topFace(s){ return tex(256, 256, (g, W, H) => { g.fillStyle = s.estado === 'ocupado' ? '#9db58f' : s.estado === 'preparacion' ? '#e9d9b0' : '#e3b44a'; g.fillRect(0,0,W,H);
     g.fillStyle = '#3a2e25'; g.textAlign = 'center'; g.font = '900 130px Archivo, Arial'; g.fillText(s.n, W/2, H/2 + 46); }); }
   function signTex(p){ return tex(1024, 256, (g, W, H) => { g.fillStyle = '#fbf7f1'; g.fillRect(0,0,W,H); drawFlag(g, p, 28, 48, 210, 160);
     g.strokeStyle = 'rgba(58,46,37,.25)'; g.lineWidth = 2; g.strokeRect(28, 48, 210, 160);
@@ -820,11 +824,11 @@ const G = (() => {
       const side = track(new THREE.MeshStandardMaterial({ map:logoFace(s), roughness:.5 }));
       const top = track(new THREE.MeshStandardMaterial({ map:topFace(s), roughness:.5 }));
       const cube = box(2.5, 2.5, 2.5, [side, side, top, side, side, side]); cube.position.y = 1.5; g.add(cube);
-      if (s.estado !== 'ocupado') { const e = new THREE.LineSegments(track(new THREE.EdgesGeometry(cube.geometry)), track(new THREE.LineBasicMaterial({ color:0xe3b44a }))); cube.add(e);
+      if (s.estado === 'en_construccion') { const e = new THREE.LineSegments(track(new THREE.EdgesGeometry(cube.geometry)), track(new THREE.LineBasicMaterial({ color:0xe3b44a }))); cube.add(e);
         const cone = new THREE.Mesh(track(new THREE.ConeGeometry(.28, .75, 16)), MC('#e9875a', { roughness:.6 })); cone.position.set(1.45, .6, 1.45); cone.castShadow = true; g.add(cone);
         const ring = new THREE.Mesh(track(new THREE.CylinderGeometry(.17, .21, .14, 16)), MC('#ffffff')); ring.position.set(1.45, .62, 1.45); g.add(ring); }
       cube.userData.base = 1.5; cube.userData.stand = s;
-      cube.userData.pick = { type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', name: s.estado === 'ocupado' ? s.empresa : `Stand ${s.n} · en construcción`, sub: s.estado === 'ocupado' ? s.industria : 'Próximamente' };
+      cube.userData.pick = { type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: s.estado === 'en_construccion' ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? s.industria : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' };
       pick.push(cube); world.add(g);
     });
   }
@@ -849,6 +853,7 @@ const G = (() => {
     t.innerHTML = `${esc(d.name)}<small>${esc(d.sub)}</small>`; t.style.left = (e.clientX - r.left) + 'px'; t.style.top = (e.clientY - r.top) + 'px'; t.hidden = false; } }
   function click(e){ const o = hit(e); if (!o) return; const d = o.userData.pick;
     if (d.type === 'pav') enterPav(d.slug);
+    else if (d.prep) toast(`La ficha de ${d.name} estará disponible pronto.`);
     else if (d.empty) toast(`Stand ${d.n} en construcción: pronto estará aquí una empresa de ${S.pav.nombre}.`);
     else { const wp = new THREE.Vector3(); o.getWorldPosition(wp); const dir = new THREE.Vector3(-Math.sign(wp.x), 0, .35).normalize();
       flyTo(wp.clone().add(dir.multiplyScalar(5.5)).setY(3.2), wp.clone().setY(1.6), .75, () => { location.hash = d.id; }); }

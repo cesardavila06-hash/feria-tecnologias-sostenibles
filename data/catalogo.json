@@ -440,39 +440,356 @@
     "#f1bf00",
     "#aa151b"
    ],
-   "estado": "en preparación",
+   "estado": "abierto",
    "stands": [
     {
      "n": 1,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "Grupo Enhol",
+     "razon_social": "Empresa española · en el Perú: Arequipa",
+     "logo": null,
+     "imagenes": [
+      {
+       "src": "img/enhol-illa.jpg",
+       "pie": "Central Solar Fotovoltaica ILLA, Arequipa (agosto de 2026)"
+      }
+     ],
+     "industria": "Energía solar",
+     "sector": "Energía",
+     "tecnologias": [
+      "Central solar fotovoltaica",
+      "Contrato PPA de largo plazo"
+     ],
+     "titulo": "Central Solar Fotovoltaica ILLA: la planta solar más grande del Perú en 2027",
+     "lugar": "Arequipa, Perú · cliente: Kallpa Generación (PPA de largo plazo)",
+     "reto": "La matriz energética del Perú ha estado dominada por fuentes hidroeléctricas y térmicas. Hacía falta aumentar la participación de energías renovables no convencionales para diversificar el sistema eléctrico, fortalecer la seguridad energética y avanzar en la transición energética y la descarbonización.",
+     "solucion": "Grupo Enhol desarrolló el proyecto fotovoltaico ILLA, una central solar de 396 MW en Arequipa con más de 744 000 módulos y un acuerdo de compraventa de energía (PPA) a largo plazo con Kallpa Generación. El proyecto integró desarrollo, financiación, construcción, conexión y puesta en marcha.",
+     "cifras_titulo": "Los resultados",
+     "cifras": [
+      [
+       "396 MW",
+       "de capacidad instalada"
+      ],
+      [
+       "1,2 TWh/año",
+       "de producción estimada, cerca del 2,5 % de la demanda eléctrica nacional"
+      ],
+      [
+       "305 000 tCO₂e",
+       "de emisiones evitadas al año"
+      ],
+      [
+       "USD 350 M",
+       "de inversión"
+      ],
+      [
+       "744 000+",
+       "módulos fotovoltaicos"
+      ],
+      [
+       "600+",
+       "empleos generados"
+      ]
+     ],
+     "circular": "Generación renovable a gran escala que reduce las emisiones de la generación convencional, refuerza la seguridad del suministro y atrae inversión para infraestructura sostenible.",
+     "nota": "Cifras estimadas o calculadas por Grupo Enhol.",
+     "contactos": [
+      {
+       "nombre": "María Antonieta Mendiola Larco",
+       "cargo": "Country Development Manager · Perú",
+       "correos": [
+        "mmendiola@enhol.es"
+       ],
+       "telefonos": [
+        "(998) 091-1777"
+       ]
+      }
+     ],
+     "web": "https://grupoenhol.es",
+     "web_etiqueta": "grupoenhol.es"
     },
     {
      "n": 2,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "CYMI MASA Perú",
+     "razon_social": "Grupo VINCI · en el Perú desde 2002",
+     "logo": "img/logo-cymimasa.png",
+     "imagenes": [],
+     "industria": "Energía e infraestructura",
+     "sector": "Ingeniería, construcción y montajes (EPC)",
+     "tecnologias": [
+      "Plantas solares y eólicas",
+      "Infraestructura eléctrica",
+      "Mantenimiento y eficiencia energética"
+     ],
+     "titulo": "Ingeniería y construcción EPC para la transición energética",
+     "lugar": "Perú · energía, minería, agua, industria e infraestructura",
+     "reto": "La transición energética necesita construir y mantener plantas renovables y la infraestructura eléctrica que las conecta, y hacer más eficientes las instalaciones industriales que ya existen.",
+     "solucion": "Proyectos integrales EPC (ingeniería, procura y construcción): plantas solares fotovoltaicas y parques eólicos, subestaciones y líneas de transmisión, montajes industriales y mineros, instalaciones para plantas de tratamiento de agua, y operación y mantenimiento con digitalización y eficiencia energética.",
+     "cifras_titulo": "Cifras y experiencia",
+     "cifras": [
+      [
+       "64 años",
+       "de trayectoria internacional (desde 1962)"
+      ],
+      [
+       "24 años",
+       "en el Perú (desde 2002)"
+      ],
+      [
+       "EPC",
+       "proyectos integrales de ingeniería, procura y construcción"
+      ],
+      [
+       "HVDC",
+       "plataformas offshore para integrar renovables marinas"
+      ]
+     ],
+     "circular": "Prolonga la vida útil de los activos con mantenimiento especializado, mejora la eficiencia energética con automatización y digitalización, y contribuye a una gestión más eficiente del agua.",
+     "nota": "",
+     "contactos": [
+      {
+       "nombre": "Ignacio Saiz Uriz",
+       "cargo": "Country Manager · CYMI MASA Perú",
+       "correos": [
+        "isaizu@cymimasa.com"
+       ],
+       "telefonos": [
+        "+51 945 775 334"
+       ]
+      }
+     ],
+     "web": "https://www.cymimasa.com",
+     "web_etiqueta": "cymimasa.com"
     },
     {
      "n": 3,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "Tizona BioEnergy",
+     "razon_social": "Empresa peruana · origen de la tecnología: Suiza",
+     "logo": "img/logo-tizona.png",
+     "imagenes": [],
+     "industria": "Biocombustibles y residuos",
+     "sector": "Valorización de aceites de cocina usados (UCO)",
+     "tecnologias": [
+      "Recolección de aceite usado (UCO)",
+      "Materia prima para biodiésel"
+     ],
+     "titulo": "Del aceite de cocina usado al biocombustible",
+     "lugar": "Perú, desde 2021 · restaurantes, hoteles e industria alimentaria",
+     "reto": "El aceite de cocina usado que se vierte o se desecha contamina el agua y los suelos, y se pierde un recurso que puede reemplazar materias primas de origen fósil.",
+     "solucion": "Recolección y acopio de aceites de cocina usados en restaurantes, hoteles e industria alimentaria; acondicionamiento, almacenamiento y consolidación; y suministro como materia prima sostenible para biodiésel y otros biocombustibles, en mercados nacionales e internacionales.",
+     "cifras_titulo": "Cifras y beneficios",
+     "cifras": [
+      [
+       "Desde 2021",
+       "valorizando aceites usados en el Perú"
+      ],
+      [
+       "UCO → biodiésel",
+       "un residuo convertido en materia prima energética"
+      ],
+      [
+       "Menos vertidos",
+       "menos contaminación del agua y los suelos"
+      ],
+      [
+       "Trazabilidad",
+       "cadenas de suministro responsables"
+      ]
+     ],
+     "circular": "Recupera un residuo contaminante y lo reincorpora a la cadena de valor de los biocombustibles, reduciendo la dependencia de materias primas fósiles.",
+     "nota": "",
+     "contactos": [
+      {
+       "nombre": "Lucas Escriva",
+       "cargo": "CEO",
+       "correos": [
+        "lescriva@tizona.ch"
+       ],
+       "telefonos": [
+        "+51 915 298 294"
+       ]
+      }
+     ],
+     "web": "https://tizona.ch",
+     "web_etiqueta": "tizona.ch"
     },
     {
      "n": 4,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "Elecnor",
+     "razon_social": "Presencia en más de 40 países",
+     "logo": "img/logo-elecnor.png",
+     "imagenes": [],
+     "industria": "Energía renovable",
+     "sector": "Infraestructura, energía y servicios",
+     "tecnologias": [
+      "Energía renovable",
+      "Transmisión eléctrica",
+      "Almacenamiento energético"
+     ],
+     "titulo": "Energía renovable para que la minería y la gran industria dejen el gas y el diésel",
+     "lugar": "Energía, minería y grandes industrias",
+     "reto": "Muchas operaciones mineras e industriales dependen de gas o diésel para generar electricidad, con costos variables y una huella de carbono alta.",
+     "solucion": "Desarrollo y ejecución de proyectos de energía renovable, transmisión en media y alta tensión y almacenamiento energético, que dan confiabilidad al suministro, una tarifa eléctrica competitiva en el tiempo y descarbonización del ciclo de vida de productos y servicios.",
+     "cifras_titulo": "Cifras y beneficios",
+     "cifras": [
+      [
+       "65+ años",
+       "de experiencia global"
+      ],
+      [
+       "40+",
+       "países con presencia"
+      ],
+      [
+       "Menos diésel",
+       "y gas para generar electricidad"
+      ],
+      [
+       "Tarifa estable",
+       "competitiva a lo largo del tiempo"
+      ]
+     ],
+     "circular": "Reduce la huella de carbono ligada al consumo eléctrico y la dependencia de combustibles fósiles.",
+     "nota": "",
+     "contactos": [
+      {
+       "nombre": "Ricardo Rupay",
+       "cargo": "Desarrollo de Proyectos de Energías Renovables",
+       "correos": [
+        "rirupay@elecnor.es"
+       ],
+       "telefonos": [
+        "+51 993 725 548"
+       ]
+      }
+     ],
+     "web": "https://www.elecnor.com",
+     "web_etiqueta": "elecnor.com"
     },
     {
      "n": 5,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "SAMPOL",
+     "razon_social": "Grupo multinacional familiar · fundado en Mallorca en 1934",
+     "logo": "img/logo-sampol.png",
+     "imagenes": [],
+     "industria": "Energía y agua",
+     "sector": "Ingeniería, energía e instalaciones integrales",
+     "tecnologias": [
+      "Cogeneración y trigeneración",
+      "Clean Energy & Water Management",
+      "Biogás de residuos"
+     ],
+     "titulo": "Energía y agua en circuito: cogeneración, renovables y reúso",
+     "lugar": "Industria, hoteles, hospitales, aeropuertos y puertos",
+     "reto": "Industrias, hoteles e infraestructuras consumen mucha energía y agua, y desaprovechan el calor residual y los residuos que podrían generar energía.",
+     "solucion": "Diseño, construcción y mantenimiento de instalaciones de generación y distribución de energía, cogeneración y trigeneración, integración de renovables, automatización y control. Su solución Clean Energy & Water Management integra el suministro de energía, la producción de agua potable y el tratamiento de aguas residuales.",
+     "cifras_titulo": "Cifras y beneficios",
+     "cifras": [
+      [
+       "90+ años",
+       "de experiencia (desde 1934)"
+      ],
+      [
+       "Calor útil",
+       "aprovechado con cogeneración y trigeneración"
+      ],
+      [
+       "Agua tratada",
+       "reutilizada para riego"
+      ],
+      [
+       "Biogás",
+       "de residuos industriales (destilería Bacardí, Puerto Rico)"
+      ]
+     ],
+     "circular": "Aprovecha el calor residual y el biogás de residuos industriales, y permite reutilizar el agua tratada para riego.",
+     "nota": "",
+     "contactos": [
+      {
+       "nombre": "David Ramos",
+       "cargo": "Gerente de Proyectos",
+       "correos": [
+        "dramos@sampol.com"
+       ],
+       "telefonos": [
+        "+51 989 105 708"
+       ]
+      }
+     ],
+     "web": "https://www.sampol.com",
+     "web_etiqueta": "sampol.com"
     },
     {
      "n": 6,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "IDOM",
+     "razon_social": "Fundada en Bilbao en 1957",
+     "logo": "img/logo-idom.png",
+     "imagenes": [],
+     "industria": "Residuos y economía circular",
+     "sector": "Consultoría, ingeniería y arquitectura",
+     "tecnologias": [
+      "Estrategias de economía circular",
+      "Plantas de reciclaje",
+      "Reúso de agua"
+     ],
+     "titulo": "Ingeniería para convertir residuos en recursos",
+     "lugar": "Minería, energía, industria, agua, agroindustria y sector público",
+     "reto": "Industrias, minas y ciudades generan residuos y consumen agua y energía que podrían aprovecharse mejor, y necesitan descarbonizar sus procesos.",
+     "solucion": "Consultoría y estrategias de economía circular, gestión y valorización de residuos, ingeniería de plantas de reciclaje y recuperación de recursos, eficiencia energética y descarbonización industrial, reúso de agua, aprovechamiento de subproductos y proyectos de renovables y biocombustibles.",
+     "cifras_titulo": "Cifras y experiencia",
+     "cifras": [
+      [
+       "69 años",
+       "de experiencia (desde 1957)"
+      ],
+      [
+       "20+ años",
+       "en gestión de residuos y economía circular"
+      ],
+      [
+       "5 000+",
+       "profesionales"
+      ],
+      [
+       "125",
+       "países con proyectos"
+      ]
+     ],
+     "circular": "Transforma residuos en recursos, energía y productos, reutiliza agua y recupera materiales para prolongar la vida útil de los recursos.",
+     "nota": "",
+     "contactos": [
+      {
+       "nombre": "Carlos Jimenez",
+       "cargo": "Gerente General",
+       "correos": [
+        "carlos.jimenez@idom.com"
+       ],
+       "telefonos": [
+        "+51 988 003 881"
+       ]
+      }
+     ],
+     "web": "https://www.idom.com",
+     "web_etiqueta": "idom.com"
     },
     {
      "n": 7,
-     "estado": "en_construccion"
+     "estado": "preparacion",
+     "empresa": "ACCIONA",
+     "logo": "img/logo-acciona.png",
+     "industria": "Ficha en preparación"
     },
     {
      "n": 8,
-     "estado": "en_construccion"
+     "estado": "preparacion",
+     "empresa": "Kalfrisa",
+     "logo": "img/logo-kalfrisa.png",
+     "industria": "Ficha en preparación"
     },
     {
      "n": 9,
