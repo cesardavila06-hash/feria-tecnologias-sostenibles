@@ -650,11 +650,18 @@ const G = (() => {
     const ring = new THREE.Mesh(track(new THREE.TorusGeometry(9, .14, 8, 96)), MC('#b9a68a')); ring.rotation.x = Math.PI/2; ring.position.set(J.x, .06, J.z); world.add(ring);
     const basin = new THREE.Mesh(track(new THREE.CylinderGeometry(3, 3.2, .7, 48)), MC('#d6c6ab')); basin.position.set(J.x, .35, J.z); basin.castShadow = basin.receiveShadow = true; world.add(basin);
     const water = new THREE.Mesh(track(new THREE.CylinderGeometry(2.75, 2.75, .1, 48)), M('#a9c9d4', { roughness:.15, metalness:.1 })); water.position.set(J.x, .66, J.z); world.add(water);
-    const ped = new THREE.Mesh(track(new THREE.CylinderGeometry(.5, .6, 1.2, 24)), MC('#cdb99a')); ped.position.set(J.x, 1.2, J.z); ped.castShadow = true; world.add(ped);
-    const sc = new THREE.Mesh(track(new THREE.TorusGeometry(1.25, .26, 20, 64, Math.PI * 1.7)), M('#b8694b', { roughness:.45, metalness:.2 }));
-    sc.position.set(J.x, 3.05, J.z); sc.castShadow = true; sc.userData.spin = true; world.add(sc);
+    // esfera de piedra que gira impulsada por una película de agua
+    const cup = new THREE.Mesh(track(new THREE.CylinderGeometry(.95, .6, 1.5, 32)), MC('#bfb2a0')); cup.position.set(J.x, 1.4, J.z); cup.castShadow = cup.receiveShadow = true; world.add(cup);
+    const ft = flowTex('#b9d6e0', '#ffffff'); ft.repeat.set(4, 1); flows.push({ t:ft, v:1.4 });
+    const film = new THREE.Mesh(track(new THREE.CylinderGeometry(.99, .64, 1.5, 32, 1, true)), track(new THREE.MeshStandardMaterial({ map:ft, transparent:true, opacity:.6, roughness:.1 }))); film.position.copy(cup.position); world.add(film);
+    const rock = new THREE.Mesh(track(new THREE.SphereGeometry(1.35, 48, 32)), track(new THREE.MeshStandardMaterial({ map:stoneTex(), roughness:.5, metalness:.05 })));
+    rock.position.set(J.x, 3.28, J.z); rock.castShadow = true; rock.userData.roll = true; world.add(rock);
+    const wt = flowTex('#cfe5ec', '#ffffff'); wt.repeat.set(3, 2); flows.push({ t:wt, v:.9 });
+    const skin = new THREE.Mesh(track(new THREE.SphereGeometry(1.38, 48, 32)), track(new THREE.MeshStandardMaterial({ map:wt, transparent:true, opacity:.16, roughness:.05, depthWrite:false }))); skin.position.copy(rock.position); world.add(skin);
     // ramales hacia cada pabellón
-    S.data.pabellones.forEach((p, i) => {
+    const P = S.data.pabellones.slice(), di = P.findIndex(p => p.id === 'de');
+    if (di >= 0) { const [de] = P.splice(di, 1); P.splice(Math.floor(P.length / 2), 0, de); }
+    P.forEach((p, i) => {
       const sp = spots[i], dir = new THREE.Vector3(J.x - sp.x, 0, J.z - sp.z).normalize();
       const from = { x: J.x - dir.x * 8.6, z: J.z - dir.z * 8.6 }, to = { x: sp.x + dir.x * 8.4, z: sp.z + dir.z * 8.4 };
       world.add(strip(from, to, 3.6, paveTex));
@@ -756,6 +763,12 @@ const G = (() => {
     const hub = new THREE.Mesh(track(new THREE.SphereGeometry(.55*s, 16, 12)), white); rotor.add(hub);
     for (let k = 0; k < 3; k++) { const arm = new THREE.Group(); arm.rotation.z = k * Math.PI * 2 / 3; const b = ubox(.6*s, 10.5*s, .14*s, white); b.position.y = 5.5*s; arm.add(b); rotor.add(arm); }
     rotor.rotation.z = rnd() * 6; rotor.userData.speed = .7 + rnd() * .5; spinners.push(rotor); g.add(rotor); return g; }
+  function stoneTex(){ return tex(512, 256, (g, W, H) => { g.fillStyle = '#857a6d'; g.fillRect(0,0,W,H);
+      const cs = ['#5f564c','#a89c8c','#4a433c','#c2b6a6','#766b5f','#3d3732'];
+      for (let i = 0; i < 16000; i++) { g.fillStyle = cs[i % cs.length]; g.globalAlpha = .7; const r = .6 + rnd()*1.8; g.fillRect(rnd()*W, rnd()*H, r, r); }
+      g.globalAlpha = .5; g.strokeStyle = '#ddd2c2'; g.lineWidth = 2.5;
+      for (let k = 0; k < 5; k++) { g.beginPath(); let x = rnd()*W, y = rnd()*H; g.moveTo(x, y); for (let j = 0; j < 8; j++) { x += 20 + rnd()*40; y += (rnd()-.5)*30; g.lineTo(x, y); } g.stroke(); }
+      g.globalAlpha = 1; }); }
   function flowTex(base, streak){ const t = tex(128, 256, (g, W, H) => { g.fillStyle = base; g.fillRect(0,0,W,H);
       for (let i = 0; i < 70; i++) { g.fillStyle = streak; g.globalAlpha = .25 + rnd()*.5; g.fillRect(rnd()*W, rnd()*H, 2 + rnd()*3, 18 + rnd()*40); } g.globalAlpha = 1; }, [1, 1]); return t; }
   function hydro(){ const g = new THREE.Group(), conc = MC('#d6d0c5', { roughness:.9 }), conc2 = MC('#c4bdb1', { roughness:.9 });
@@ -870,7 +883,7 @@ const G = (() => {
       cam.position.lerpVectors(fly.p0, fly.p1, e); ctl.target.lerpVectors(fly.t0, fly.t1, e); if (k >= 1) { const d = fly.done; fly = null; d && d(); } }
     flags.forEach(f => { const a = f.geometry.attributes.position, b = f.userData.base; for (let i = 0; i < a.count; i++) { const x = b[i*3]; a.array[i*3+2] = Math.sin(x * 2.2 - t * 3.2) * .12 * (x / 2.7); } a.needsUpdate = true; });
     spinners.forEach(r => r.rotation.z += dt * r.userData.speed); flows.forEach(f => f.t.offset.y += dt * f.v * .4);
-    world && world.children.forEach(function walk(o){ if (o.userData.spin) o.rotation.y += dt * .5;
+    world && world.children.forEach(function walk(o){ if (o.userData.spin) o.rotation.y += dt * .5; if (o.userData.roll) { o.rotation.x += dt * .35; o.rotation.z += dt * .1; }
       if (o.userData.base !== undefined && o.userData.stand) { const target = o.userData.base + (o === hover ? .35 : 0) + Math.sin(t * 1.4 + o.userData.stand.n) * .05; o.position.y += (target - o.position.y) * .15; if (o === hover) o.rotation.y += dt * .6; }
       if (mode === 'pav' && o.children.length) o.children.forEach(walk); });
     ctl.update(); R.render(scene, cam); }
