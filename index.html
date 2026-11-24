@@ -341,10 +341,10 @@ function renderSummary(){
   const el = $('#summary');
   if (S.view === 'plaza') {
     const all = S.data.pabellones.flatMap(occupied);
-    const inds = new Set(all.map(s => s.industria));
+    const inds = new Set(all.map(s => s.industria).filter(Boolean));
     el.innerHTML = `<div><b>${S.data.pabellones.length}</b><span>pabellones</span></div><div><b>${all.length}</b><span>casos de éxito publicados</span></div><div><b>${inds.size}</b><span>industrias</span></div>`;
   } else {
-    const occ = occupied(S.pav), inds = new Set(occ.map(s => s.industria));
+    const occ = occupied(S.pav), inds = new Set(occ.map(s => s.industria).filter(Boolean));
     el.innerHTML = occ.length
       ? `<div><b>${S.pav.stands.length}</b><span>stands</span></div><div><b>${occ.length}</b><span>empresas</span></div><div><b>${inds.size}</b><span>industrias</span></div><div><b>${building(S.pav).length}</b><span>en construcción</span></div>`
       : `<div><b>${S.pav.stands.length}</b><span>stands en construcción</span></div><div><b>0</b><span>empresas cargadas</span></div>`;
@@ -369,7 +369,7 @@ function renderBelow(){
     el.innerHTML = `<div class="sec-head"><h2>Stands en construcción</h2><span class="muted">${p.stands.length} espacios</span></div>${buildGrid(p, p.stands)}`;
     return;
   }
-  const inds = ['todas', ...new Set(occ.map(s => s.industria))];
+  const inds = ['todas', ...new Set(occ.map(s => s.industria).filter(Boolean))];
   el.innerHTML = `<div class="sec-head"><h2>Empresas del pabellón</h2></div>
     <div class="tools">
       <label class="search"><span aria-hidden="true" class="muted">⌕</span><input id="q" type="search" placeholder="Buscar empresa, tecnología o industria" value="${esc(S.q)}" aria-label="Buscar"></label>
@@ -399,7 +399,7 @@ function renderGrid(){
     <a class="card" href="#${p.id}-${s.n}">
       <div class="logo-box"><span class="num">Stand ${s.n}</span>${logoHTML(s)}</div>
       <div class="card-body">
-        <div class="eyebrow">${esc(s.industria)}</div>
+        <div class="eyebrow">${esc(s.industria || s.sector || '')}</div>
         <h3>${esc(s.empresa)}</h3>
         <p>${esc(s.titulo)}</p>
         ${(s.cifras||[]).length ? `<div class="kpi"><b>${esc(s.cifras[0][0])}</b><span>${esc(s.cifras[0][1])}</span></div>` : `<div class="kpi"><span>${esc((s.tecnologias||[])[0] || s.industria)}</span></div>`}
@@ -434,7 +434,7 @@ function renderDetail(){
         <div class="eyebrow" style="display:flex;gap:10px;align-items:center">${flagHTML(p)} Pabellón ${esc(p.nombre)} · Stand ${s.n}</div>
         <h1>${esc(s.empresa)}</h1>
         <div class="muted">${esc(s.razon_social ? s.razon_social + ' · ' : '')}${esc(s.sector)}</div>
-        <div class="tags"><span class="tag ind">${esc(s.industria)}</span>${(s.tecnologias||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <div class="tags">${s.industria ? `<span class="tag ind">${esc(s.industria)}</span>` : ''}${(s.tecnologias||[]).map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
       </div>
       ${media}
     </section>
@@ -589,7 +589,7 @@ const G = (() => {
     g.fillStyle = '#3a2e25'; g.fillRect(0, H*.8, W, H*.2);
     g.fillStyle = '#9db58f'; g.fillRect(0, H*.8, W, 8);
     g.fillStyle = '#ffffff'; g.textAlign = 'left'; g.font = '800 30px Archivo, Arial'; g.fillText(`STAND ${s.n}`, 26, H*.9 + 12);
-    g.textAlign = 'right'; g.fillStyle = '#dfe7d6'; fitText(g, s.industria.toUpperCase(), W*.58, 24, 700); g.fillText(s.industria.toUpperCase(), W - 26, H*.9 + 10);
+    g.textAlign = 'right'; g.fillStyle = '#dfe7d6'; const indT = (s.industria || s.sector || '').toUpperCase(); fitText(g, indT, W*.58, 24, 700); g.fillText(indT, W - 26, H*.9 + 10);
   }); }
   function topFace(s){ return tex(256, 256, (g, W, H) => { g.fillStyle = s.estado === 'ocupado' ? '#9db58f' : s.estado === 'preparacion' ? '#e9d9b0' : '#e3b44a'; g.fillRect(0,0,W,H);
     g.fillStyle = '#3a2e25'; g.textAlign = 'center'; g.font = '900 130px Archivo, Arial'; g.fillText(s.n, W/2, H/2 + 46); }); }
@@ -844,7 +844,7 @@ const G = (() => {
         const cone = new THREE.Mesh(track(new THREE.ConeGeometry(.28, .75, 16)), MC('#e9875a', { roughness:.6 })); cone.position.set(1.45, .6, 1.45); cone.castShadow = true; g.add(cone);
         const ring = new THREE.Mesh(track(new THREE.CylinderGeometry(.17, .21, .14, 16)), MC('#ffffff')); ring.position.set(1.45, .62, 1.45); g.add(ring); }
       cube.userData.base = 1.5; cube.userData.stand = s;
-      cube.userData.pick = { type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: s.estado === 'en_construccion' ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? s.industria : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' };
+      cube.userData.pick = { type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: s.estado === 'en_construccion' ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? (s.industria || s.sector) : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' };
       pick.push(cube); world.add(g);
     });
   }
