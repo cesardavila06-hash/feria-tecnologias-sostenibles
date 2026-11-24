@@ -405,14 +405,351 @@
     },
     {
      "n": 8,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "Boreal Light",
+     "razon_social": "Boreal Light GmbH · Berlín, Alemania",
+     "logo": "img/logo-boreal.png",
+     "imagenes": [
+      {
+       "src": "img/boreal-planta-contenedor.jpg",
+       "pie": "Planta de tratamiento de agua de Boreal Light, montada en contenedor y alimentada con energía solar"
+      }
+     ],
+     "industria": "Agua y saneamiento",
+     "sector": "Tratamiento de agua con energía solar",
+     "tecnologias": [
+      "Desalinización solar de agua salobre",
+      "Tratamiento y reúso de aguas residuales",
+      "Energía solar 100 %"
+     ],
+     "titulo": "Del acceso al agua al desarrollo productivo sostenible",
+     "lugar": "Comunidad wayuu de Santa Ana, La Guajira (Colombia) · PTAR San Juan de Miraflores, Lima (Perú)",
+     "reto": "La comunidad indígena wayuu de Santa Ana, en La Guajira, no tenía acceso a agua limpia: dependía de agua transportada, con un costo alto, y su única fuente local era un pozo de agua salobre. Sin agua limpia tampoco podía desarrollar actividades productivas, como la crianza de aves.",
+     "solucion": "Boreal Light instaló una planta alimentada al 100 % con energía solar que desaliniza el agua salobre del pozo existente y produce 20 000 litros de agua limpia al día. En el Perú implementó una planta de capacidad equivalente en la PTAR de San Juan de Miraflores, en Lima, para tratar aguas residuales y obtener agua para reúso. La misma tecnología se adapta a fuentes de agua muy distintas.",
+     "cifras_titulo": "Los resultados",
+     "cifras": [
+      [
+       "20 000 L/día",
+       "de agua limpia (7,3 millones de litros al año)"
+      ],
+      [
+       "−89,6 %",
+       "en el costo de suministro de agua"
+      ],
+      [
+       "COP 25,8 M",
+       "de ahorro económico anual"
+      ],
+      [
+       "160",
+       "familias beneficiadas"
+      ],
+      [
+       "5–7 tCO₂/año",
+       "evitadas al eliminar 7 200 km/año de transporte de agua"
+      ],
+      [
+       "100 %",
+       "energía solar"
+      ]
+     ],
+     "circular": "La salmuera de la desalinización abastece una laguna de peces comunitaria y riega cultivos de papaya, frijol guajiro, guanábana y plátano. Con el agua, la comunidad abrió una fábrica de hielo y de agua en bolsa que genera ingresos y ayuda a financiar la operación y el mantenimiento de la planta, y una granja avícola que antes era inviable.",
+     "nota": "Cifras reportadas por Boreal Light GmbH para el proyecto de Santa Ana (La Guajira, Colombia).",
+     "contactos": [
+      {
+       "nombre": "Ali Al-hakim",
+       "correos": [
+        "alhakim@boreallight.com"
+       ],
+       "telefonos": [
+        "+49 174 4453532"
+       ],
+       "direccion": "Berlín, Alemania"
+      }
+     ],
+     "web": "https://www.boreallight.com/",
+     "web_etiqueta": "boreallight.com"
     },
     {
      "n": 9,
-     "estado": "en_construccion"
+     "estado": "ocupado",
+     "empresa": "Ecopreneur",
+     "razon_social": "Una empresa de SKion Water (grupo alemán) · Lima, Bogotá y Santiago",
+     "logo": "img/logo-ecopreneur.png",
+     "imagenes": [
+      {
+       "src": "img/ecopreneur-san-rafael.jpg",
+       "pie": "Mina San Rafael (MINSUR), Puno: remoción de sólidos con filtros Dynasand, 1 908 m³/h (2022)"
+      },
+      {
+       "src": "img/ecopreneur-yanacocha.jpg",
+       "pie": "Mina Yanacocha, Cajamarca: clarificadores LAMELLA® de 700 y 200 m³/h (2019)"
+      },
+      {
+       "src": "img/ecopreneur-antamina.jpg",
+       "pie": "Mina Antamina, zona STP: PTAR MBBR de 200 m³/día a 4 200 m s. n. m."
+      },
+      {
+       "src": "img/ecopreneur-quellaveco.jpg",
+       "pie": "Mina Quellaveco (Anglo American), Moquegua: agua para procesos con filtros multimedia y ósmosis inversa"
+      },
+      {
+       "src": "img/ecopreneur-aceros-arequipa.jpg",
+       "pie": "Aceros Arequipa, Pisco: plantas de tratamiento de aguas residuales MBBR de 205 y 125 m³/día (2020)"
+      }
+     ],
+     "industria": "Minería",
+     "sector": "Tratamiento de agua y efluentes (EPC)",
+     "tecnologias": [
+      "Reúso de agua de mina y de proceso",
+      "Filtros Dynasand y clarificadores Lamella",
+      "PTAR MBBR y ósmosis inversa",
+      "Waste to energy y tratamiento de lodos"
+     ],
+     "titulo": "Tratamiento y reúso de agua en la minería y la industria del Perú",
+     "lugar": "Puno, Cajamarca, Ayacucho, Áncash, La Libertad, Moquegua, Ica y Cusco (Perú)",
+     "reto": "Las operaciones mineras e industriales generan agua de mina, agua de proceso y aguas residuales de campamentos que deben tratarse para cumplir la normativa y reducir la captación de agua fresca, muchas veces en zonas remotas y a más de 4 000 m s. n. m.",
+     "solucion": "Como contratista EPC, Ecopreneur diseña, construye, pone en marcha y opera plantas llave en mano, con opciones de financiamiento. En el Perú ha instalado filtros Dynasand en la mina San Rafael (MINSUR), clarificadores Lamella en Yanacocha, una planta de agua de mina en Pallancata (Hochschild), PTAR MBBR en Antamina, Poderosa y Aceros Arequipa, y plantas de agua potable con ósmosis inversa y ultrafiltración en Las Bambas.",
+     "cifras_titulo": "Experiencia en el Perú",
+     "cifras": [
+      [
+       "1 908 m³/h",
+       "de agua tratada con filtros Dynasand en la mina San Rafael (2022)"
+      ],
+      [
+       "900 m³/h",
+       "de clarificación Lamella en la mina Yanacocha (2019)"
+      ],
+      [
+       "360 m³/h",
+       "en la planta de agua de mina de Pallancata (2015)"
+      ],
+      [
+       "4 200 m s. n. m.",
+       "PTAR MBBR operando en Antamina y Poderosa"
+      ],
+      [
+       "3 países",
+       "con operaciones: Perú, Colombia y Chile"
+      ]
+     ],
+     "circular": "Sus plantas permiten reusar el agua de mina, de proceso y residual, y reducir la captación de agua fresca. La empresa también trabaja en tratamiento de lodos y biodigestión (waste to energy), que convierte residuos en energía.",
+     "nota": "Datos tomados de la presentación corporativa de Ecopreneur (SKion Water, 2024) y del brochure del Clúster de Tecnologías Alemanas.",
+     "contactos": [
+      {
+       "nombre": "Ernesto Montoya",
+       "correos": [
+        "emontoya@ecopreneur.pe"
+       ],
+       "telefonos": [
+        "940 488 356"
+       ]
+      },
+      {
+       "nombre": "Ecopreneur Perú · oficina Lima",
+       "correos": [
+        "eco@ecopreneur.pe"
+       ],
+       "telefonos": [
+        "+51 981 913 737",
+        "+51 1 264 4542"
+       ],
+       "direccion": "Av. Miguel Dasso 117, piso 14, San Isidro, Lima"
+      }
+     ],
+     "web": "https://www.ecopreneur.pe",
+     "web_etiqueta": "ecopreneur.pe"
     },
     {
      "n": 10,
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
+     "empresa": "Bosch Rexroth",
+     "razon_social": "Bosch Rexroth Perú · empresa del Grupo Bosch",
+     "logo": "img/logo-rexroth.png",
+     "imagenes": [
+      {
+       "src": "img/rexroth-ctrlx.jpg",
+       "pie": "Plataforma de automatización ctrlX AUTOMATION de Bosch Rexroth"
+      }
+     ],
+     "industria": "Manufactura",
+     "sector": "Automatización, hidráulica industrial y maquinaria móvil",
+     "tecnologias": [
+      "Automatización de fábricas",
+      "Hidráulica industrial eficiente",
+      "Maquinaria móvil"
+     ],
+     "titulo": "Eficiencia energética y ahorro de recursos en todo el ciclo de vida del producto",
+     "lugar": "Lima, Perú",
+     "reto": "La industria necesita producir con menos energía y menos recursos, sin perder productividad, mientras enfrenta otros desafíos operativos al mismo tiempo.",
+     "solucion": "Bosch Rexroth aplica un enfoque integral de sostenibilidad a lo largo de todo el ciclo de vida del producto. Sus productos y soluciones en automatización de fábricas, hidráulica industrial y maquinaria móvil buscan una alta eficiencia energética y ahorro de recursos, tanto en la producción como en la operación diaria.",
+     "cifras_titulo": "Lo que aporta",
+     "beneficios": [
+      "Mayor eficiencia energética en máquinas y plantas",
+      "Ahorro de recursos en la producción y en la operación diaria",
+      "Soluciones para automatización de fábricas, hidráulica industrial y maquinaria móvil"
+     ],
+     "cifras": [],
+     "circular": "Considerar la sostenibilidad en todo el ciclo de vida del producto (diseño, uso y fin de vida) reduce el consumo de energía y materiales de los equipos que usan sus clientes.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "contactos": [
+      {
+       "nombre": "Paul Guerrero",
+       "correos": [
+        "paul.guerrero@boschrexroth.pe"
+       ],
+       "telefonos": [
+        "946 239 416"
+       ]
+      }
+     ],
+     "web": "https://www.boschrexroth.com",
+     "web_etiqueta": "boschrexroth.com"
+    },
+    {
+     "n": 11,
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
+     "empresa": "3R Ingeniería de Automatización",
+     "razon_social": "Representante de fabricantes alemanes · Lima, Perú",
+     "logo": "img/logo-3r.png",
+     "imagenes": [
+      {
+       "src": "img/3r-instrumentacion.jpg",
+       "pie": "Instrumentación de proceso en planta industrial"
+      }
+     ],
+     "industria": "Manufactura",
+     "sector": "Instrumentación y automatización industrial",
+     "tecnologias": [
+      "Instrumentación de procesos",
+      "Automatización industrial",
+      "Ingeniería especializada"
+     ],
+     "titulo": "Procesos industriales más eficientes, seguros y sostenibles con instrumentación alemana",
+     "lugar": "Lima, Perú",
+     "reto": "Las industrias necesitan operar sus procesos de forma más eficiente, segura y sostenible, con datos confiables para controlar el uso de recursos.",
+     "solucion": "3R suministra equipos de fabricantes líderes alemanes y los complementa con servicios de ingeniería especializada en instrumentación y automatización industrial, para entregar soluciones integrales, seguras y de vanguardia.",
+     "cifras_titulo": "Lo que aporta",
+     "beneficios": [
+      "Productos y soluciones que optimizan el uso de recursos",
+      "Operación de procesos más eficiente y segura",
+      "Ingeniería y servicios locales con tecnología alemana"
+     ],
+     "cifras": [],
+     "circular": "Medir y automatizar con precisión permite optimizar el consumo de recursos en los procesos, con una rentabilidad responsable y de largo plazo.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "contactos": [
+      {
+       "nombre": "Sandro Cerna",
+       "correos": [
+        "sandro.cerna@3ringenieria.com"
+       ],
+       "telefonos": [
+        "997 506 453"
+       ]
+      }
+     ],
+     "web": "https://www.3ringenieria.com",
+     "web_etiqueta": "3ringenieria.com"
+    },
+    {
+     "n": 12,
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
+     "empresa": "CADMO Soluciones",
+     "razon_social": "CADMO Soluciones SAC · Lima, Perú",
+     "logo": "img/logo-cadmo.png",
+     "imagenes": [
+      {
+       "src": "img/cadmo-medidor.jpg",
+       "pie": "Medidor inteligente de energía MetCom Solutions"
+      }
+     ],
+     "industria": "Energía",
+     "sector": "Medición inteligente de energía (Smart Energy y Smart Grid)",
+     "tecnologias": [
+      "Medidores inteligentes MetCom (Alemania)",
+      "Smart Grid",
+      "Análisis de perfiles de demanda"
+     ],
+     "titulo": "Medición inteligente de energía para reducir pérdidas y alargar la vida útil de los activos eléctricos",
+     "lugar": "Lima, Perú",
+     "reto": "Sin información confiable sobre el consumo eléctrico es difícil detectar desviaciones, reducir pérdidas y evitar consumos innecesarios en las operaciones.",
+     "solucion": "CADMO integra y comercializa en el Perú los medidores de energía de MetCom Solutions, tecnología alemana homologada de medición inteligente. Los equipos convierten el consumo eléctrico en información para monitorear cargas, analizar perfiles de demanda, detectar desviaciones y optimizar el desempeño eléctrico.",
+     "cifras_titulo": "Lo que aporta",
+     "beneficios": [
+      "Monitoreo de cargas y análisis de perfiles de demanda",
+      "Detección de desviaciones y reducción de pérdidas",
+      "Menos intervenciones correctivas y mayor vida útil de los activos"
+     ],
+     "cifras": [],
+     "circular": "Usar mejor los recursos existentes: evita consumos innecesarios, prolonga la vida útil de los activos eléctricos y reduce intervenciones correctivas, en línea con una gestión energética digital y trazable.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "contactos": [
+      {
+       "nombre": "Luis Aching",
+       "correos": [
+        "luis.aching@cadmo.pe"
+       ],
+       "telefonos": [
+        "989 274 000"
+       ]
+      }
+     ],
+     "web": "https://www.cadmo.pe",
+     "web_etiqueta": "cadmo.pe"
+    },
+    {
+     "n": 13,
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
+     "empresa": "Watergenics",
+     "razon_social": "",
+     "logo": "img/logo-watergenics.png",
+     "imagenes": [
+      {
+       "src": "img/watergenics-sensor.jpg",
+       "pie": "Sensor de Watergenics para monitoreo de calidad de agua en tiempo real"
+      }
+     ],
+     "industria": "Agua y saneamiento",
+     "sector": "Monitoreo inteligente de calidad de agua",
+     "tecnologias": [
+      "Espectroscopía vibracional",
+      "Inteligencia artificial",
+      "Monitoreo en tiempo real sin reactivos"
+     ],
+     "titulo": "Monitoreo de calidad de agua en tiempo real, sin reactivos químicos ni calibraciones manuales",
+     "lugar": "Perú",
+     "reto": "Controlar la calidad del agua suele requerir muestreos, reactivos químicos y calibraciones manuales, lo que retrasa la detección de cambios en parámetros críticos.",
+     "solucion": "Watergenics combina sensores avanzados, espectroscopía vibracional e inteligencia artificial para medir en tiempo real la calidad del agua, sin reactivos químicos ni calibraciones manuales.",
+     "cifras_titulo": "Lo que aporta",
+     "beneficios": [
+      "Mejor control operativo de la calidad del agua",
+      "Detección temprana de variaciones en parámetros químicos críticos",
+      "Decisiones operativas y ambientales basadas en datos"
+     ],
+     "cifras": [],
+     "circular": "Eliminar los reactivos químicos de la medición evita generar residuos peligrosos, y el monitoreo continuo ayuda a optimizar el tratamiento y el reúso del agua.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "contactos": [
+      {
+       "nombre": "Leonel Aguilar",
+       "correos": [
+        "leonel@watergenics.tech"
+       ],
+       "telefonos": [
+        "979 707 226"
+       ]
+      }
+     ],
+     "web": "https://watergenics.tech",
+     "web_etiqueta": "watergenics.tech"
+    },
+    {
+     "n": 14,
      "estado": "en_construccion"
     }
    ],
