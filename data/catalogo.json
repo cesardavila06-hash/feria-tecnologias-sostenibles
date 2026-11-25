@@ -863,7 +863,16 @@
      "empresa": "CYMI MASA Perú",
      "razon_social": "Grupo VINCI · en el Perú desde 2002",
      "logo": "img/logo-cymimasa.png",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/cymi-euro-solar.jpg",
+       "pie": "Proyecto Euro-Solar: sistemas de electrificación aislados"
+      },
+      {
+       "src": "img/cymi-data-centers.jpg",
+       "pie": "Soluciones globales para proyectos de data centers"
+      }
+     ],
      "industria": "Energía e infraestructura",
      "sector": "Ingeniería, construcción y montajes (EPC)",
      "tecnologias": [
@@ -917,7 +926,16 @@
      "empresa": "Tizona BioEnergy",
      "razon_social": "Empresa peruana · origen de la tecnología: Suiza",
      "logo": "img/logo-tizona.png",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/tizona-van.jpg",
+       "pie": "Unidad de recolección de aceite de cocina usado de Tizona Bioenergy y Seven Seas: \"Programa tu recogida y ayuda a tu ecosistema local\""
+      },
+      {
+       "src": "img/tizona-acopio.jpg",
+       "pie": "Acopio y trasvase de aceite de cocina usado"
+      }
+     ],
      "industria": "Biocombustibles y residuos",
      "sector": "Valorización de aceites de cocina usados (UCO)",
      "tecnologias": [
@@ -970,7 +988,16 @@
      "empresa": "Elecnor",
      "razon_social": "Presencia en más de 40 países",
      "logo": "img/logo-elecnor.png",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/elecnor-gecama.jpg",
+       "pie": "Parque Eólico Gecama"
+      },
+      {
+       "src": "img/elecnor-innovacion.jpg",
+       "pie": "Innovación en Elecnor"
+      }
+     ],
      "industria": "Energía renovable",
      "sector": "Infraestructura, energía y servicios",
      "tecnologias": [
@@ -1024,7 +1051,16 @@
      "empresa": "SAMPOL",
      "razon_social": "Grupo multinacional familiar · fundado en Mallorca en 1934",
      "logo": "img/logo-sampol.png",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/sampol-pista-2.jpg",
+       "pie": "Balizamiento de la pista 16L-34R del Aeropuerto Internacional Jorge Chávez (Lima)"
+      },
+      {
+       "src": "img/sampol-pista-1.jpg",
+       "pie": "Pista 16L-34R del Aeropuerto Internacional Jorge Chávez"
+      }
+     ],
      "industria": "Energía y agua",
      "sector": "Ingeniería, energía e instalaciones integrales",
      "tecnologias": [
@@ -1078,7 +1114,16 @@
      "empresa": "IDOM",
      "razon_social": "Fundada en Bilbao en 1957",
      "logo": "img/logo-idom.png",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/idom-intipampa.jpg",
+       "pie": "Central solar fotovoltaica Intipampa (Moquegua, Perú)"
+      },
+      {
+       "src": "img/idom-talara.jpg",
+       "pie": "Gestión del proyecto (PMC) de la Refinería de Talara para Petroperú"
+      }
+     ],
      "industria": "Residuos y economía circular",
      "sector": "Consultoría, ingeniería y arquitectura",
      "tecnologias": [
@@ -1128,25 +1173,122 @@
     },
     {
      "n": 7,
-     "estado": "preparacion",
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
      "empresa": "ACCIONA",
+     "razon_social": "Grupo español con más de 100 años · en el Perú desde 1998",
      "logo": "img/logo-acciona.png",
-     "industria": "Ficha en preparación"
+     "imagenes": [
+      {
+       "src": "img/acciona-centro-control.jpg",
+       "pie": "Centro de Control que gestiona la mayor red eléctrica del Perú"
+      },
+      {
+       "src": "img/acciona-pachacutec.jpg",
+       "pie": "EDAR Pachacútec: planta depuradora de aguas residuales"
+      }
+     ],
+     "industria": "Energía e infraestructura",
+     "sector": "Infraestructuras sostenibles y energías renovables",
+     "tecnologias": [
+      "Energía renovable",
+      "Depuración y reutilización de agua",
+      "Valorización de residuos",
+      "Movilidad eléctrica e hidrógeno verde"
+     ],
+     "titulo": "Infraestructura y energía renovable para una economía baja en carbono",
+     "lugar": "Perú desde 1998 · capacidad renovable en 22 países",
+     "reto": "La transición a una economía baja en carbono exige infraestructuras que generen energía limpia, usen el agua de forma eficiente y aprovechen los residuos, durante todo su ciclo de vida.",
+     "solucion": "ACCIONA desarrolla proyectos en toda la cadena de valor: diseño, construcción, operación y mantenimiento. Trabaja en energía (eólica, fotovoltaica, hidroeléctrica, biomasa, almacenamiento, autoconsumo, hidrógeno verde y movilidad eléctrica), transporte, agua (depuración y reutilización, desalación, potabilización y agua para la agricultura) y ciudades. Ofrece a sus clientes soluciones de descarbonización: optimización de consumos, monitorización energética, generación distribuida y electrificación de procesos.",
+     "cifras_titulo": "Cifras globales",
+     "cifras": [
+      [
+       "14,6 GW",
+       "de capacidad renovable instalada en 22 países"
+      ],
+      [
+       "27 648 GWh/año",
+       "de electricidad limpia generada"
+      ],
+      [
+       "98,2 %",
+       "del CAPEX alineado con la Taxonomía Europea"
+      ],
+      [
+       "90,3 %",
+       "de los ingresos elegibles alineados con la Taxonomía Europea"
+      ]
+     ],
+     "circular": "Tecnologías para reutilizar el agua, valorizar residuos y producir energía a partir de materiales recuperados; almacenamiento con baterías de segunda vida; hidrógeno y gases renovables; y plantas de clasificación y recuperación que convierten residuos en materias primas secundarias y electricidad limpia.",
+     "nota": "Cifras globales reportadas por ACCIONA.",
+     "contactos": [
+      {
+       "nombre": "Álvaro Delgado",
+       "cargo": "Gerente de Proyectos",
+       "correos": [
+        "alvaro.delgado.martin@acciona.com"
+       ],
+       "telefonos": [
+        "+51 943 027 306"
+       ]
+      }
+     ],
+     "web": "https://www.acciona.com",
+     "web_etiqueta": "acciona.com"
     },
     {
      "n": 8,
-     "estado": "preparacion",
+     "estado": "ocupado",
+     "eyebrow": "Solución destacada",
      "empresa": "Kalfrisa",
+     "razon_social": "KALFRISA S.A.U. · Zaragoza, España (1965) · en el Perú con Cabieses S.A., Lima",
      "logo": "img/logo-kalfrisa.png",
-     "industria": "Ficha en preparación"
-    },
-    {
-     "n": 9,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 10,
-     "estado": "en_construccion"
+     "imagenes": [
+      {
+       "src": "img/kalfrisa-valorizacion.jpg",
+       "pie": "Instalación de valorización energética de residuos"
+      },
+      {
+       "src": "img/kalfrisa-recuperadores.jpg",
+       "pie": "Recuperadores de calor fabricados por Kalfrisa"
+      }
+     ],
+     "industria": "Eficiencia energética",
+     "sector": "Recuperación de energía, tratamiento de emisiones y valorización de residuos",
+     "tecnologias": [
+      "Recuperadores de calor",
+      "Oxidación térmica de COV",
+      "Valorización energética de residuos (CSR/CDR)",
+      "Calentadores de aire de proceso"
+     ],
+     "titulo": "Calor residual y residuos convertidos en energía para la industria",
+     "lugar": "Más de 50 países · en el Perú desde 2022",
+     "reto": "Muchos procesos industriales pierden energía en sus gases de escape, emiten compuestos orgánicos volátiles (COV) y generan residuos que no pueden reciclarse, pero que aún tienen poder calorífico.",
+     "solucion": "Kalfrisa diseña, fabrica, monta y pone en marcha recuperadores de calor que precalientan aire u otros fluidos con la energía de los gases de escape; equipos de oxidación térmica que eliminan COV; y plantas de tratamiento térmico que aprovechan residuos industriales, combustible sólido recuperado (CSR) y combustible derivado de residuos (CDR) para generar calor, vapor o electricidad. Atiende siderurgia, aluminio, vidrio, química y petroquímica, automoción, farmacéutica, alimentos, envases, gestión de residuos y los sectores hospitalario y agropecuario.",
+     "cifras_titulo": "Lo que aporta",
+     "cifras": [],
+     "beneficios": [
+      "Menor consumo de combustible y menos emisiones de CO₂ al reincorporar el calor residual al proceso",
+      "Gases de proceso más limpios gracias a la oxidación térmica de COV",
+      "Sustitución parcial de combustibles fósiles por combustibles alternativos procedentes de residuos",
+      "Menos residuos destinados a eliminación"
+     ],
+     "circular": "Da valor energético a fracciones de residuos que no pueden reciclarse y recupera energía que de otro modo se perdería. Además, trabaja en la electrificación de equipos de tratamiento de emisiones.",
+     "nota": "Ficha elaborada con la información enviada por Kalfrisa. Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "contactos": [
+      {
+       "nombre": "Gonzalo Estallo",
+       "cargo": "Latam Regional Manager",
+       "correos": [
+        "gestallo@kalfrisa.com"
+       ],
+       "telefonos": [
+        "+34 682 45 24 76"
+       ]
+      }
+     ],
+     "web": "https://www.kalfrisa.com",
+     "web_etiqueta": "kalfrisa.com"
     }
    ],
    "bandera_dir": "h",
@@ -1639,6 +1781,113 @@
     "nombre": "Finlandia Circular",
     "logo": "img/finlandia-circular.png"
    }
+  },
+  {
+   "id": "ch",
+   "slug": "suiza",
+   "nombre": "Suiza",
+   "bandera": [
+    "#d52b1e",
+    "#ffffff"
+   ],
+   "estado": "abierto",
+   "bandera_dir": "cross",
+   "bandera_pesos": [
+    1,
+    1
+   ],
+   "stands": [
+    {
+     "n": 1,
+     "estado": "ocupado",
+     "empresa": "Sulzer",
+     "razon_social": "Sulzer Ltd · Winterthur, Suiza (1834) · 160 centros de producción y servicio",
+     "logo": "img/logo-sulzer.png",
+     "imagenes": [
+      {
+       "src": "img/sulzer-agitador-salomix.jpg",
+       "pie": "Agitador de montaje lateral SALOMIX™, usado en el caso de los 53 agitadores"
+      },
+      {
+       "src": "img/sulzer-tratamiento-agua.jpg",
+       "pie": "Sulzer ofrece soluciones para todo el ciclo del agua, desde la captación hasta el punto de consumo"
+      },
+      {
+       "src": "img/sulzer-turbocompresor-hst.jpg",
+       "pie": "Turbocompresor HST™ con rodamientos magnéticos para aireación"
+      },
+      {
+       "src": "img/sulzer-bomba-smd.jpg",
+       "pie": "Bomba de cámara partida SMD"
+      },
+      {
+       "src": "img/sulzer-control.jpg",
+       "pie": "Control de procesos de bombeo y tratamiento"
+      }
+     ],
+     "industria": "Eficiencia energética",
+     "sector": "Bombas, agitadores, aireación y tratamiento de agua",
+     "tecnologias": [
+      "Agitadores SALOMIX™",
+      "Selección validada con CFD",
+      "Bombas y turbocompresores eficientes"
+     ],
+     "titulo": "53 agitadores optimizados: 42 % menos energía en la agitación",
+     "lugar": "Sector industrial colombiano (pulpa y papel)",
+     "reto": "Una planta operaba 53 agitadores de 63 kW en promedio, unas 8 000 horas al año: 3,34 MW de demanda y 26,7 GWh/año de consumo. La agitación funciona miles de horas al año y es uno de los principales costos operativos.",
+     "solucion": "Sulzer optimizó la selección de cada agitador según el volumen del tanque y la mezcla que exige el proceso, con agitadores de montaje lateral SALOMIX™. Antes de implementar, simulaciones CFD validaron la circulación, la homogeneización y la potencia requerida, y un sistema de monitoreo da seguimiento a la confiabilidad mecánica. La demanda bajó de 3,34 MW a 1,94 MW con la misma función de mezcla.",
+     "cifras": [
+      [
+       "−42 %",
+       "de consumo de energía en agitación"
+      ],
+      [
+       "1,4 MW",
+       "de demanda eléctrica liberada"
+      ],
+      [
+       "11,2 GWh/año",
+       "de energía ahorrada"
+      ],
+      [
+       "USD 1,1–1,7 M",
+       "de ahorro económico al año"
+      ],
+      [
+       "USD 22–34 M",
+       "de ahorro simple en 20 años"
+      ],
+      [
+       "1,7 años",
+       "de periodo de recuperación de la inversión"
+      ]
+     ],
+     "circular": "La energía que no se consume reduce la huella de carbono y libera capacidad eléctrica para crecer. En el Perú, Sulzer participó en la planta de tratamiento de aguas residuales del Aeropuerto Internacional Jorge Chávez y suministra bombas que recirculan agua recuperada en la minería andina, lo que reduce la captación de agua fresca. Sus servicios de reparación y modernización alargan la vida útil de los equipos.",
+     "nota": "Cifras del caso de referencia de Sulzer (8 000 h/año; ahorro simple sin inflación ni descuento financiero). En el Perú y la región andina, sus soluciones logran reducciones de 30 % a 48 % en el consumo energético de los equipos intervenidos.",
+     "contactos": [
+      {
+       "nombre": "Fabricio Forttini",
+       "cargo": "Sales Engineer",
+       "correos": [
+        "fabricio.forttini@sulzer.com"
+       ],
+       "telefonos": [
+        "+51 979 367 319"
+       ]
+      },
+      {
+       "nombre": "Karime Perales",
+       "cargo": "Head of Sales Andean Region",
+       "correos": [
+        "karime.perales@sulzer.com"
+       ],
+       "telefonos": []
+      }
+     ],
+     "web": "https://www.sulzer.com/es-es",
+     "web_etiqueta": "sulzer.com"
+    }
+   ]
   }
  ]
 }
