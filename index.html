@@ -830,12 +830,19 @@ const G = (() => {
       for (let x = -80; x < W + 80; x += 60) { g.beginPath(); g.moveTo(x, H-70); g.lineTo(x+30, H-70); g.lineTo(x-40, H); g.lineTo(x-70, H); g.closePath(); g.fill(); } g.restore();
       g.textAlign = 'center'; g.fillStyle = '#b08a3e'; g.font = '900 78px Archivo, Arial'; g.fillText('PRÓXIMAMENTE', W/2, H/2 - 10);
       g.fillStyle = '#7a6a5b'; g.font = '600 40px Figtree, Arial'; g.fillText(`Stand ${s.n} · espacio para una nueva empresa`, W/2, H/2 + 56); return; }
-    g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H);
-    const im = S.imgs[s.logo];
-    if (im){ const bw = W*.8, bh = H*.6, r = Math.min(bw/im.width, bh/im.height), w = im.width*r, h = im.height*r; g.drawImage(im, (W-w)/2, (H*.86-h)/2, w, h); }
-    else { g.fillStyle = '#3a2e25'; g.textAlign = 'center'; fitText(g, s.empresa, W*.84, 110, 900); g.fillText(s.empresa, W/2, H*.5); }
+    g.fillStyle = '#f9f6f1'; g.fillRect(0,0,W,H);
+    // el logo va en el letrero elevado; aquí, el titular del caso
+    g.fillStyle = '#5d7d52'; g.font = '800 30px Archivo, Arial'; g.textAlign = 'left'; g.fillText((s.eyebrow || 'Caso de éxito').toUpperCase(), 48, 82);
+    g.fillStyle = '#3a2e25'; g.font = '800 54px Archivo, Arial';
+    const words = String(s.titulo || s.empresa).split(' '), lines = []; let ln = '';
+    words.forEach(w => { const t = ln ? ln + ' ' + w : w; if (g.measureText(t).width > W - 96 && ln) { lines.push(ln); ln = w; } else ln = t; }); if (ln) lines.push(ln);
+    lines.slice(0, 4).forEach((l, i) => g.fillText(i === 3 && lines.length > 4 ? l + '…' : l, 48, 160 + i * 66));
     g.fillStyle = '#3a2e25'; g.font = '800 30px Archivo, Arial'; g.textAlign = 'left'; g.fillText(`STAND ${s.n}`, 28, H - 26);
     if (s.estado === 'preparacion'){ g.textAlign = 'right'; g.fillStyle = '#b8694b'; g.font = '700 30px Figtree, Arial'; g.fillText('Ficha en preparación', W - 28, H - 26); } }); }
+  function signBoardTex(s, acc){ return tex(1024, 300, (g, W, H) => { g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H);
+    g.fillStyle = '#' + new THREE.Color(acc).convertLinearToSRGB().getHexString(); g.fillRect(0, H - 22, W, 22);
+    const im = S.imgs[s.logo]; if (im){ const r = Math.min(W*.86/im.width, (H-50)*.86/im.height), w = im.width*r, h = im.height*r; g.drawImage(im, (W-w)/2, (H-22-h)/2, w, h); }
+    else { g.fillStyle = '#3a2e25'; g.textAlign = 'center'; fitText(g, s.empresa, W*.86, 120, 900); g.fillText(s.empresa, W/2, H*.58); } }); }
   function counterTex(s){ return tex(512, 192, (g, W, H) => { g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H); const im = S.imgs[s.logo];
     if (im && s.estado !== 'en_construccion'){ const r = Math.min(W*.78/im.width, H*.62/im.height), w = im.width*r, h = im.height*r; g.drawImage(im, (W-w)/2, (H-h)/2, w, h); } }); }
   function screenTex(p, title, img){ return tex(1024, 576, (g, W, H) => { g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H);
@@ -855,10 +862,16 @@ const G = (() => {
     const glow = M(acc, { roughness:.5, emissive:acc, emissiveIntensity:0 });
     const edge = ubox(W, .03, .22, glow); edge.position.set(0, .115, D/2 - .11); g.add(edge);
     const back = ubox(W, H, .12, white); back.position.set(0, H/2, -D/2); g.add(back);
-    [-1, 1].forEach(k => { const sw = ubox(.1, H, D, white); sw.position.set(k * W/2, H/2, 0); g.add(sw);
-      const post = ubox(.12, H + .14, .12, alu); post.position.set(k * W/2, (H + .14)/2, D/2); g.add(post);
- });
-    const beam = ubox(W + .12, .12, .12, alu); beam.position.set(0, H + .07, D/2); g.add(beam);
+    const RD = D * .6, FD = D - RD;
+    [-1, 1].forEach(k => { const sw = ubox(.1, H, RD, white); sw.position.set(k * W/2, H/2, -D/2 + RD/2); g.add(sw);
+      const lo = ubox(.1, .95, FD, white); lo.position.set(k * W/2, .475, D/2 - FD/2); g.add(lo);
+      const cap = ubox(.14, .06, FD, alu); cap.position.set(k * W/2, .98, D/2 - FD/2); g.add(cap); });
+    const topRail = ubox(W + .12, .1, .16, alu); topRail.position.set(0, H + .05, -D/2); g.add(topRail);
+    // letrero elevado con el logo, visible por encima de los stands delanteros
+    if (!con) { [-1, 1].forEach(k => { const m = ubox(.08, 1.35, .08, alu); m.position.set(k * 1.7, H + .67, -D/2); g.add(m); });
+      const st = signBoardTex(s, acc), side = MC('#ffffff');
+      const sign = new THREE.Mesh(track(new THREE.BoxGeometry(4.5, 1.32, .14)), [side, side, side, side, track(new THREE.MeshStandardMaterial({ map:st, roughness:.5 })), side]);
+      sign.position.set(0, H + 1.12, -D/2 + .05); sign.rotation.x = -.12; sign.castShadow = true; g.add(sign); }
     const fascia = ubox(W - .1, .26, .04, M(acc, { roughness:.6 })); fascia.position.set(0, H - .2, -D/2 + .08); g.add(fascia);
     const panel = new THREE.Mesh(track(new THREE.PlaneGeometry(3.3, 1.65)), track(new THREE.MeshStandardMaterial({ map:panelTex(s), roughness:.6 }))); panel.position.set(0, 1.45, -D/2 + .065); g.add(panel);
     if (!con) {
@@ -877,7 +890,7 @@ const G = (() => {
       const tape = new THREE.Mesh(track(new THREE.PlaneGeometry(W, .16)), track(new THREE.MeshStandardMaterial({ map:tex(256, 16, (c, w, h) => { c.fillStyle = '#e3b44a'; c.fillRect(0,0,w,h); c.fillStyle = '#3a2e25'; for (let i = 0; i < w; i += 32) c.fillRect(i, 0, 16, h); }), side:THREE.DoubleSide })));
       tape.position.set(0, .95, D/2); g.add(tape);
     }
-    const hit = ubox(W, H, D, track(new THREE.MeshBasicMaterial({ transparent:true, opacity:0, depthWrite:false }))); hit.castShadow = hit.receiveShadow = false; hit.position.y = H/2;
+    const hit = ubox(W, H + 1.7, D, track(new THREE.MeshBasicMaterial({ transparent:true, opacity:0, depthWrite:false }))); hit.castShadow = hit.receiveShadow = false; hit.position.y = (H + 1.7)/2;
     hit.userData = { stand:s, glow, face:new THREE.Vector3(0, 0, 1),
       pick:{ type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: con ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? (s.industria || s.sector) : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' } };
     g.add(hit); pick.push(hit); world.add(g); }
@@ -893,14 +906,17 @@ const G = (() => {
     // pantallas grandes en el muro del fondo: cámara de comercio y bienvenida
     const cam = p.camara && S.imgs[p.camara.logo];
     [[-10, cam ? screenTex(p, '', cam) : screenTex(p, `Pabellón ${p.nombre}`)], [10, screenTex(p, `Pabellón ${p.nombre}`)]].forEach(([x, t]) => {
-      const fr = ubox(6.4, 3.7, .2, MC('#2b2f33', { roughness:.3 })); fr.position.set(x, 4.65, -12.6); world.add(fr);
-      const sc = new THREE.Mesh(track(new THREE.PlaneGeometry(6.1, 3.43)), track(new THREE.MeshStandardMaterial({ map:t, roughness:.4, emissive:0xffffff, emissiveMap:t, emissiveIntensity:.25 }))); sc.position.set(x, 4.65, -12.49); world.add(sc); });
+      const fr = ubox(5.4, 3.12, .2, MC('#2b2f33', { roughness:.3 })); fr.position.set(x, 5.35, -12.6); world.add(fr);
+      const sc = new THREE.Mesh(track(new THREE.PlaneGeometry(5.15, 2.9)), track(new THREE.MeshStandardMaterial({ map:t, roughness:.4, emissive:0xffffff, emissiveMap:t, emissiveIntensity:.25 }))); sc.position.set(x, 5.35, -12.49); world.add(sc); });
     // stands: filas de 4 orientadas hacia la entrada, pasillo central libre
     const n = p.stands.length, rowsN = Math.max(1, Math.ceil(n / 4));
-    const ROWS = { 1:[0], 2:[2.75, -2.75], 3:[5.5, 0, -5.5], 4:[7, 1.5, -4, -9.5] }[Math.min(rowsN, 4)];
+    const ROWS = { 1:[0], 2:[3.2, -3.2], 3:[6.4, 0, -6.4], 4:[9.3, 3.1, -3.1, -9.3] }[Math.min(rowsN, 4)];
+    views.pav = rowsN >= 4 ? { pos:[0, 17.5, 23], tgt:[0, 0, -.4] } : rowsN === 3 ? { pos:[0, 17, 23.5], tgt:[0, .3, -1.2] } : { pos:[0, 14.5, 20], tgt:[0, .3, -.8] };
     const COLS = [-7.2, 7.2, -12.2, 12.2], order = ROWS.slice().reverse();
-    p.stands.forEach((s, i) => { if (n === 1) return booth(p, s, 0, -3, 1.45);
-      booth(p, s, COLS[i % 4], order[Math.floor(i / 4) % order.length]); });
+    p.stands.forEach((s, i) => { if (n === 1) return booth(p, s, 0, 2.5, 1.4);
+      const row = Math.floor(i / 4), inRow = Math.min(4, n - row * 4), col = i % 4;
+      const x = inRow === 1 ? 0 : COLS[col];   // un stand suelto va al centro, como isla destacada
+      booth(p, s, x, order[row % order.length]); });
     // visitantes
     for (let k = 0; k < 16; k++) { const pe = person(k), inAisle = k < 9;
       const px = inAisle ? (rnd() - .5) * 7.5 : (rnd() < .5 ? -1 : 1) * (8 + rnd() * 5), pz = inAisle ? 10 - rnd() * 20 : (ROWS[Math.floor(rnd() * ROWS.length)] + 2.7);

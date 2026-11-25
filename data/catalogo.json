@@ -751,10 +751,6 @@
      ],
      "web": "https://watergenics.tech",
      "web_etiqueta": "watergenics.tech"
-    },
-    {
-     "n": 14,
-     "estado": "en_construccion"
     }
    ],
    "bandera_dir": "h",
@@ -1767,18 +1763,6 @@
      ],
      "web": "https://tiimi.la",
      "web_etiqueta": "tiimi.la"
-    },
-    {
-     "n": 8,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 9,
-     "estado": "en_construccion"
-    },
-    {
-     "n": 10,
-     "estado": "en_construccion"
     }
    ],
    "camara": {
