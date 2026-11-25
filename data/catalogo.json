@@ -20,6 +20,10 @@
   {
    "nombre": "Finlandia Circular",
    "logo": "img/finlandia-circular.png"
+  },
+  {
+   "nombre": "SwissCham Perú · Cámara de Comercio Suiza en el Perú",
+   "logo": "img/camara-suiza.png"
   }
  ],
  "_plantilla_stand": {
@@ -1887,7 +1891,11 @@
      "web": "https://www.sulzer.com/es-es",
      "web_etiqueta": "sulzer.com"
     }
-   ]
+   ],
+   "camara": {
+    "nombre": "Cámara de Comercio Suiza en el Perú (SwissCham Perú)",
+    "logo": "img/camara-suiza.png"
+   }
   }
  ]
 }

@@ -333,7 +333,7 @@ function renderHero(){
     const p = S.pav, n = occupied(p).length;
     $('#hero').innerHTML = `<div class="eyebrow">${flagHTML(p)} Pabellón ${esc(p.nombre)}</div>
       <h1>${n ? (n === 1 ? `1 empresa, 1 caso de <em>éxito</em>` : `${n} empresas, ${n} casos de <em>éxito</em>`) : `Pabellón en <em>construcción</em>`}</h1>
-      <p>${n ? 'Cada caja es una empresa. Tócala para conocer su tecnología, el problema que resolvió y sus cifras de impacto.' : `Los ${p.stands.length} stands de ${esc(p.nombre)} están en construcción. Las fichas de las empresas aparecerán aquí en cuanto carguemos sus datos.`}</p>
+      <p>${n ? 'Cada stand es una empresa. Tócalo para conocer su tecnología, el problema que resolvió y sus cifras de impacto.' : `Los ${p.stands.length} stands de ${esc(p.nombre)} están en construcción. Las fichas de las empresas aparecerán aquí en cuanto carguemos sus datos.`}</p>
       ${p.camara ? `<div class="camara"><span class="chip-logo"><img src="${esc(p.camara.logo)}" alt="${esc(p.camara.nombre)}"></span><small>${esc(p.camara.nombre)}</small></div>` : ''}`;
   }
 }
@@ -494,7 +494,7 @@ function renderHud(){
     $('#hudBottom').querySelectorAll('.gate-btn').forEach(b => b.addEventListener('click', () => G.enterPav(b.dataset.slug)));
   } else {
     $('#hudTop').innerHTML = `<a class="pill" href="#inicio">← Volver al camino</a><span style="display:flex;gap:8px;flex-wrap:wrap"><span class="pill">${flagHTML(S.pav)} Pabellón ${esc(S.pav.nombre)}</span><button class="pill" id="resetCam">Vista general</button></span>`;
-    $('#hudBottom').innerHTML = `<div class="hint">${occupied(S.pav).length ? 'Toca una caja con logo para ver el caso de éxito' : 'Pabellón en construcción · ' + S.pav.stands.length + ' stands'}</div>`;
+    $('#hudBottom').innerHTML = `<div class="hint">${occupied(S.pav).length ? 'Toca un stand para ver el caso de éxito' : 'Pabellón en construcción · ' + S.pav.stands.length + ' stands'}</div>`;
   }
   const r = $('#resetCam'); if (r) r.addEventListener('click', () => G.overview());
 }
@@ -819,38 +819,98 @@ const G = (() => {
       f.position.set(x + (rnd()-.5)*.9, s/2 + .03, z + (rnd()-.5)*.9); f.rotation.y = rnd()*3; g.add(f); }
     const leaf = new THREE.Mesh(track(new THREE.IcosahedronGeometry(.42, 0)), MC('#8fa47a', { roughness:1, flatShading:true })); leaf.scale.y = .5; leaf.position.set(x, .2, z); g.add(leaf); return g; }
 
-  /* ---------- PABELLÓN: empresas como cajas con logo ---------- */
+  /* ---------- PABELLÓN: sala de exposición con stands abiertos ---------- */
+  function tileTex(rep){ return tex(512, 512, (g, W, H) => { const s = 128;
+      for (let y = 0; y < H; y += s) for (let x = 0; x < W; x += s) { const v = rnd()*10 - 5; g.fillStyle = `rgb(${200+v},${192+v},${180+v})`; g.fillRect(x, y, s, s);
+        for (let k = 0; k < 40; k++) { g.fillStyle = `rgba(150,140,128,${.05 + rnd()*.06})`; g.fillRect(x + rnd()*s, y + rnd()*s, 2 + rnd()*14, 1); } }
+      g.strokeStyle = 'rgba(160,150,138,.55)'; g.lineWidth = 2; for (let i = 0; i <= W; i += s) { g.beginPath(); g.moveTo(i,0); g.lineTo(i,H); g.moveTo(0,i); g.lineTo(W,i); g.stroke(); } }, rep); }
+  function panelTex(s){ return tex(1024, 512, (g, W, H) => {
+    if (s.estado === 'en_construccion'){ g.fillStyle = '#f3efe8'; g.fillRect(0,0,W,H);
+      g.save(); g.beginPath(); g.rect(0, H-70, W, 70); g.clip(); g.fillStyle = '#e3b44a'; g.fillRect(0, H-70, W, 70); g.fillStyle = '#3a2e25';
+      for (let x = -80; x < W + 80; x += 60) { g.beginPath(); g.moveTo(x, H-70); g.lineTo(x+30, H-70); g.lineTo(x-40, H); g.lineTo(x-70, H); g.closePath(); g.fill(); } g.restore();
+      g.textAlign = 'center'; g.fillStyle = '#b08a3e'; g.font = '900 78px Archivo, Arial'; g.fillText('PRÓXIMAMENTE', W/2, H/2 - 10);
+      g.fillStyle = '#7a6a5b'; g.font = '600 40px Figtree, Arial'; g.fillText(`Stand ${s.n} · espacio para una nueva empresa`, W/2, H/2 + 56); return; }
+    g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H);
+    const im = S.imgs[s.logo];
+    if (im){ const bw = W*.8, bh = H*.6, r = Math.min(bw/im.width, bh/im.height), w = im.width*r, h = im.height*r; g.drawImage(im, (W-w)/2, (H*.86-h)/2, w, h); }
+    else { g.fillStyle = '#3a2e25'; g.textAlign = 'center'; fitText(g, s.empresa, W*.84, 110, 900); g.fillText(s.empresa, W/2, H*.5); }
+    g.fillStyle = '#3a2e25'; g.font = '800 30px Archivo, Arial'; g.textAlign = 'left'; g.fillText(`STAND ${s.n}`, 28, H - 26);
+    if (s.estado === 'preparacion'){ g.textAlign = 'right'; g.fillStyle = '#b8694b'; g.font = '700 30px Figtree, Arial'; g.fillText('Ficha en preparación', W - 28, H - 26); } }); }
+  function counterTex(s){ return tex(512, 192, (g, W, H) => { g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H); const im = S.imgs[s.logo];
+    if (im && s.estado !== 'en_construccion'){ const r = Math.min(W*.78/im.width, H*.62/im.height), w = im.width*r, h = im.height*r; g.drawImage(im, (W-w)/2, (H-h)/2, w, h); } }); }
+  function screenTex(p, title, img){ return tex(1024, 576, (g, W, H) => { g.fillStyle = '#ffffff'; g.fillRect(0,0,W,H);
+    if (img){ const r = Math.min(W*.82/img.width, H*.7/img.height), w = img.width*r, h = img.height*r; g.drawImage(img, (W-w)/2, (H-h)/2, w, h); }
+    else { drawFlag(g, p, W/2 - 150, 90, 300, 200); g.fillStyle = '#3a2e25'; g.textAlign = 'center'; fitText(g, title, W*.86, 64, 900); g.fillText(title, W/2, 390);
+      g.fillStyle = '#5d7d52'; g.font = '700 36px Figtree, Arial'; g.fillText('Feria de Tecnologías Sostenibles', W/2, 450); } }); }
+  function person(k){ const g = new THREE.Group(), shirt = ['#7f9cb0','#c98f74','#9db58f','#e8d9c4','#8a7b6c','#b7a3c4','#d7b46a'][k % 7];
+    const legs = new THREE.Mesh(track(new THREE.CylinderGeometry(.13, .11, .82, 8)), MC(['#3e4a5a','#4a3d33','#2f3b46'][k % 3])); legs.position.y = .41; g.add(legs);
+    const body = new THREE.Mesh(track(new THREE.CylinderGeometry(.17, .15, .66, 10)), MC(shirt)); body.position.y = 1.15; g.add(body);
+    const head = new THREE.Mesh(track(new THREE.SphereGeometry(.13, 12, 10)), MC(['#c89f7e','#8d6448','#e2bfa0'][k % 3])); head.position.y = 1.6; g.add(head);
+    g.traverse(o => { if (o.isMesh) o.castShadow = true; }); return g; }
+  function booth(p, s, x, z, k=1){
+    const g = new THREE.Group(); g.position.set(x, 0, z); g.scale.setScalar(k);
+    const W = 4.6, D = 3.6, H = 2.7, con = s.estado === 'en_construccion';
+    const white = MC('#f7f5f1', { roughness:.55 }), alu = MC('#c9ced2', { roughness:.3, metalness:.55 }), acc = slatColor(p, ((s.n * .37) % 1));
+    const fl = ubox(W, .1, D, MC(con ? '#ddd4c8' : '#eef0f1', { roughness:.35 })); fl.position.y = .05; g.add(fl);
+    const glow = M(acc, { roughness:.5, emissive:acc, emissiveIntensity:0 });
+    const edge = ubox(W, .03, .22, glow); edge.position.set(0, .115, D/2 - .11); g.add(edge);
+    const back = ubox(W, H, .12, white); back.position.set(0, H/2, -D/2); g.add(back);
+    [-1, 1].forEach(k => { const sw = ubox(.1, H, D, white); sw.position.set(k * W/2, H/2, 0); g.add(sw);
+      const post = ubox(.12, H + .14, .12, alu); post.position.set(k * W/2, (H + .14)/2, D/2); g.add(post);
+ });
+    const beam = ubox(W + .12, .12, .12, alu); beam.position.set(0, H + .07, D/2); g.add(beam);
+    const fascia = ubox(W - .1, .26, .04, M(acc, { roughness:.6 })); fascia.position.set(0, H - .2, -D/2 + .08); g.add(fascia);
+    const panel = new THREE.Mesh(track(new THREE.PlaneGeometry(3.3, 1.65)), track(new THREE.MeshStandardMaterial({ map:panelTex(s), roughness:.6 }))); panel.position.set(0, 1.45, -D/2 + .065); g.add(panel);
+    if (!con) {
+      const tv = ubox(.06, .72, 1.25, M('#1d2328', { roughness:.25, metalness:.3 })); tv.position.set(-W/2 + .09, 1.55, -.35); g.add(tv);
+      const scr = new THREE.Mesh(track(new THREE.PlaneGeometry(1.15, .64)), M('#9fc0cf', { roughness:.2, emissive:'#6f9fb4', emissiveIntensity:.35 })); scr.rotation.y = Math.PI/2; scr.position.set(-W/2 + .125, 1.55, -.35); g.add(scr);
+      const ctr = ubox(1.7, 1, .62, white); ctr.position.set(.85, .6, D/2 - .75); g.add(ctr);
+      const top = ubox(1.8, .05, .72, MC('#b48c62', { roughness:.5 })); top.position.set(.85, 1.125, D/2 - .75); g.add(top);
+      const cf = new THREE.Mesh(track(new THREE.PlaneGeometry(1.6, .6)), track(new THREE.MeshStandardMaterial({ map:counterTex(s), roughness:.6 }))); cf.position.set(.85, .62, D/2 - .435); g.add(cf);
+      [-1.25, -.55].forEach(cx => { const st = new THREE.Mesh(track(new THREE.CylinderGeometry(.2, .2, .06, 14)), MC('#5b4a3d')); st.position.set(cx, .65, D/2 - 1.1); g.add(st);
+        const leg = new THREE.Mesh(track(new THREE.CylinderGeometry(.04, .06, .55, 8)), alu); leg.position.set(cx, .37, D/2 - 1.1); g.add(leg); });
+      const pot = new THREE.Mesh(track(new THREE.CylinderGeometry(.24, .18, .5, 12)), MC('#e8ddcc')); pot.position.set(W/2 - .42, .35, -D/2 + .45); g.add(pot);
+      for (let i = 0; i < 4; i++) { const lf = new THREE.Mesh(track(new THREE.IcosahedronGeometry(.3, 0)), MC(['#8fa47a','#a2b388','#97ab83'][i % 3], { roughness:1, flatShading:true }));
+        lf.position.set(W/2 - .42 + (rnd()-.5)*.3, .8 + i*.18, -D/2 + .45 + (rnd()-.5)*.3); g.add(lf); }
+    } else {
+      const cone = new THREE.Mesh(track(new THREE.ConeGeometry(.24, .65, 16)), MC('#e9875a', { roughness:.6 })); cone.position.set(W/2 - .6, .42, D/2 - .5); cone.castShadow = true; g.add(cone);
+      const tape = new THREE.Mesh(track(new THREE.PlaneGeometry(W, .16)), track(new THREE.MeshStandardMaterial({ map:tex(256, 16, (c, w, h) => { c.fillStyle = '#e3b44a'; c.fillRect(0,0,w,h); c.fillStyle = '#3a2e25'; for (let i = 0; i < w; i += 32) c.fillRect(i, 0, 16, h); }), side:THREE.DoubleSide })));
+      tape.position.set(0, .95, D/2); g.add(tape);
+    }
+    const hit = ubox(W, H, D, track(new THREE.MeshBasicMaterial({ transparent:true, opacity:0, depthWrite:false }))); hit.castShadow = hit.receiveShadow = false; hit.position.y = H/2;
+    hit.userData = { stand:s, glow, face:new THREE.Vector3(0, 0, 1),
+      pick:{ type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: con ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? (s.industria || s.sector) : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' } };
+    g.add(hit); pick.push(hit); world.add(g); }
   function buildPav(p){
     clear(); mode = 'pav';
-    const floor = new THREE.Mesh(track(new THREE.PlaneGeometry(60, 60)), track(new THREE.MeshStandardMaterial({ map:woodTex([6, 6], [206,176,134]), roughness:.8 })));
+    const floor = new THREE.Mesh(track(new THREE.PlaneGeometry(60, 60)), track(new THREE.MeshStandardMaterial({ map:tileTex([12, 12]), roughness:.45, metalness:.05 })));
     floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; world.add(floor);
-    const carpet = ubox(4.2, .05, 26, MC('#c98f74', { roughness:1 })); carpet.position.set(0, .03, 1.5); carpet.castShadow = false; world.add(carpet);
-    const back = ubox(30, 7, .4, MC('#efe6d9')); back.position.set(0, 3.5, -13); world.add(back);
+    const carpet = ubox(4.2, .03, 30, MC('#c98f74', { roughness:1 })); carpet.position.set(0, .015, 1.5); carpet.castShadow = false; world.add(carpet);
+    const back = ubox(30, 7, .4, MC('#f3efe8')); back.position.set(0, 3.5, -13); world.add(back);
     for (let x = -14.8, i = 0; x <= 14.8; x += .3, i++) { const h = 1.3 + Math.sin(i * .35) * .25; const sl = ubox(.2, h, .1, MC(slatColor(p, (x + 15) / 30))); sl.position.set(x, 7 - h/2, -12.74); world.add(sl); }
-    const banner = new THREE.Mesh(track(new THREE.PlaneGeometry(13, 3.25)), track(new THREE.MeshStandardMaterial({ map:signTex(p), roughness:.6 }))); banner.position.set(0, 3.4, -12.78); world.add(banner);
-    [-15, 15].forEach(x => { const w = ubox(.4, 4, 28, MC('#e8ddcf')); w.position.set(x, 2, 0); world.add(w); });
-    const ROWS = [5, 0, -5], COLS = [-4.6, 4.6, -10, 10];
-    // 12 puestos en tres filas; luego dos al fondo por los lados (sin tapar el letrero) y una fila delantera
-    const SLOTS = [...ROWS.flatMap(z => COLS.map(x => [x, z])), [-10, -10], [10, -10], [-4.6, 10], [4.6, 10], [-10, 10], [10, 10]];
-    p.stands.forEach((s, i) => {
-      const solo = p.stands.length === 1, [x, z] = solo ? [0, -3] : SLOTS[i % SLOTS.length], left = x < 0;
-      const g = new THREE.Group(); g.position.set(x, 0, z); g.rotation.y = solo ? 0 : left ? Math.PI/2 : -Math.PI/2;
-      const plat = ubox(4, .22, 4, MC(s.estado === 'ocupado' ? '#cdb48f' : '#bfae96')); plat.position.y = .11; g.add(plat);
-      const rim = new THREE.Mesh(track(new THREE.TorusGeometry(2.1, .05, 6, 4)), MC('#9db58f')); rim.rotation.set(Math.PI/2, 0, Math.PI/4); rim.position.y = .24; g.add(rim);
-      const side = track(new THREE.MeshStandardMaterial({ map:logoFace(s), roughness:.5 }));
-      const top = track(new THREE.MeshStandardMaterial({ map:topFace(s), roughness:.5 }));
-      const cube = box(2.5, 2.5, 2.5, [side, side, top, side, side, side]); cube.position.y = 1.5; g.add(cube);
-      if (s.estado === 'en_construccion') { const e = new THREE.LineSegments(track(new THREE.EdgesGeometry(cube.geometry)), track(new THREE.LineBasicMaterial({ color:0xe3b44a }))); cube.add(e);
-        const cone = new THREE.Mesh(track(new THREE.ConeGeometry(.28, .75, 16)), MC('#e9875a', { roughness:.6 })); cone.position.set(1.45, .6, 1.45); cone.castShadow = true; g.add(cone);
-        const ring = new THREE.Mesh(track(new THREE.CylinderGeometry(.17, .21, .14, 16)), MC('#ffffff')); ring.position.set(1.45, .62, 1.45); g.add(ring); }
-      cube.userData.base = 1.5; cube.userData.stand = s;
-      cube.userData.pick = { type:'stand', id:`${p.id}-${s.n}`, n:s.n, empty: s.estado !== 'ocupado', prep: s.estado === 'preparacion', name: s.estado === 'en_construccion' ? `Stand ${s.n} · en construcción` : s.empresa, sub: s.estado === 'ocupado' ? (s.industria || s.sector) : s.estado === 'preparacion' ? 'Ficha en preparación' : 'Próximamente' };
-      pick.push(cube); world.add(g);
-    });
+    const banner = new THREE.Mesh(track(new THREE.PlaneGeometry(11, 2.75)), track(new THREE.MeshStandardMaterial({ map:signTex(p), roughness:.6 }))); banner.position.set(0, 4.3, -12.78); world.add(banner);
+    [-15, 15].forEach(x => { const w = ubox(.4, 5, 32, MC('#efebe4')); w.position.set(x, 2.5, 0); world.add(w); });
+    // pantallas grandes en el muro del fondo: cámara de comercio y bienvenida
+    const cam = p.camara && S.imgs[p.camara.logo];
+    [[-10, cam ? screenTex(p, '', cam) : screenTex(p, `Pabellón ${p.nombre}`)], [10, screenTex(p, `Pabellón ${p.nombre}`)]].forEach(([x, t]) => {
+      const fr = ubox(6.4, 3.7, .2, MC('#2b2f33', { roughness:.3 })); fr.position.set(x, 4.65, -12.6); world.add(fr);
+      const sc = new THREE.Mesh(track(new THREE.PlaneGeometry(6.1, 3.43)), track(new THREE.MeshStandardMaterial({ map:t, roughness:.4, emissive:0xffffff, emissiveMap:t, emissiveIntensity:.25 }))); sc.position.set(x, 4.65, -12.49); world.add(sc); });
+    // stands: filas de 4 orientadas hacia la entrada, pasillo central libre
+    const n = p.stands.length, rowsN = Math.max(1, Math.ceil(n / 4));
+    const ROWS = { 1:[0], 2:[2.75, -2.75], 3:[5.5, 0, -5.5], 4:[7, 1.5, -4, -9.5] }[Math.min(rowsN, 4)];
+    const COLS = [-7.2, 7.2, -12.2, 12.2], order = ROWS.slice().reverse();
+    p.stands.forEach((s, i) => { if (n === 1) return booth(p, s, 0, -3, 1.45);
+      booth(p, s, COLS[i % 4], order[Math.floor(i / 4) % order.length]); });
+    // visitantes
+    for (let k = 0; k < 16; k++) { const pe = person(k), inAisle = k < 9;
+      const px = inAisle ? (rnd() - .5) * 7.5 : (rnd() < .5 ? -1 : 1) * (8 + rnd() * 5), pz = inAisle ? 10 - rnd() * 20 : (ROWS[Math.floor(rnd() * ROWS.length)] + 2.7);
+      pe.position.set(px, 0, pz); pe.rotation.y = rnd() * Math.PI * 2;
+      if (inAisle && k % 2 === 0) pe.userData.walk = { z0:pz, amp:2 + rnd() * 3, sp:.25 + rnd() * .2, ph:rnd() * 6 };
+      world.add(pe); }
   }
 
   /* cámara */
-  const views = { plaza:{ pos:[0, 21, 47], tgt:[0, 2, -12] }, pav:{ pos:[0, 14, 21], tgt:[0, .5, -2] } };
+  const views = { plaza:{ pos:[0, 21, 47], tgt:[0, 2, -12] }, pav:{ pos:[0, 15.5, 22.5], tgt:[0, .3, -1.6] } };
   function fit(v){ const a = cam.aspect, k = Math.min(2.6, Math.max(1, 1.75 / a)) * (mode === 'plaza' && RAD > 31 ? 1.18 : 1); return { pos: new THREE.Vector3(v.pos[0], v.pos[1]*k, v.pos[2]*k), tgt: new THREE.Vector3(...v.tgt) }; }
   function flyTo(pos, tgt, dur=1.2, done){ if (RM) { cam.position.copy(pos); ctl.target.copy(tgt); done && done(); return; }
     fly = { p0: cam.position.clone(), t0: ctl.target.clone(), p1: pos, t1: tgt, t:0, dur, done }; }
@@ -864,14 +924,14 @@ const G = (() => {
   const ray = new THREE.Raycaster(), mv = new THREE.Vector2();
   function hit(e){ const r = R.domElement.getBoundingClientRect(); mv.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     ray.setFromCamera(mv, cam); const h = ray.intersectObjects(pick, false)[0]; return h ? h.object : null; }
-  function setHover(o){ hover = o; R && (R.domElement.style.cursor = o ? 'pointer' : 'grab'); if (!o) $('#tip').hidden = true; }
+  function setHover(o){ if (hover && hover !== o && hover.userData.glow) hover.userData.glow.emissiveIntensity = 0; if (o && o.userData.glow) o.userData.glow.emissiveIntensity = .9; hover = o; R && (R.domElement.style.cursor = o ? 'pointer' : 'grab'); if (!o) $('#tip').hidden = true; }
   function hoverAt(e){ const o = hit(e); setHover(o); if (o) { const d = o.userData.pick, r = stage.getBoundingClientRect(); const t = $('#tip');
     t.innerHTML = `${esc(d.name)}<small>${esc(d.sub)}</small>`; t.style.left = (e.clientX - r.left) + 'px'; t.style.top = (e.clientY - r.top) + 'px'; t.hidden = false; } }
   function click(e){ const o = hit(e); if (!o) return; const d = o.userData.pick;
     if (d.type === 'pav') enterPav(d.slug);
     else if (d.prep) toast(`La ficha de ${d.name} estará disponible pronto.`);
     else if (d.empty) toast(`Stand ${d.n} en construcción: pronto estará aquí una empresa de ${S.pav.nombre}.`);
-    else { const wp = new THREE.Vector3(); o.getWorldPosition(wp); const dir = new THREE.Vector3(-Math.sign(wp.x), 0, .35).normalize();
+    else { const wp = new THREE.Vector3(); o.getWorldPosition(wp); const dir = o.userData.face ? o.userData.face.clone() : new THREE.Vector3(-Math.sign(wp.x), 0, .35).normalize();
       flyTo(wp.clone().add(dir.multiplyScalar(5.5)).setY(3.2), wp.clone().setY(1.6), .75, () => { location.hash = d.id; }); }
   }
   function enterPav(slug){ if (!ok) { location.hash = slug; return; }
@@ -886,7 +946,7 @@ const G = (() => {
       cam.position.lerpVectors(fly.p0, fly.p1, e); ctl.target.lerpVectors(fly.t0, fly.t1, e); if (k >= 1) { const d = fly.done; fly = null; d && d(); } }
     flags.forEach(f => { const a = f.geometry.attributes.position, b = f.userData.base; for (let i = 0; i < a.count; i++) { const x = b[i*3]; a.array[i*3+2] = Math.sin(x * 2.2 - t * 3.2) * .12 * (x / 2.7); } a.needsUpdate = true; });
     spinners.forEach(r => r.rotation.z += dt * r.userData.speed); flows.forEach(f => f.t.offset.y += dt * f.v * .4);
-    world && world.children.forEach(function walk(o){ if (o.userData.spin) o.rotation.y += dt * .5; if (o.userData.roll) { o.rotation.x += dt * .35; o.rotation.z += dt * .1; }
+    world && world.children.forEach(function walk(o){ if (o.userData.spin) o.rotation.y += dt * .5; if (o.userData.walk) { const w = o.userData.walk, ph = t * w.sp + w.ph; o.position.z = w.z0 + Math.sin(ph) * w.amp; o.rotation.y = Math.cos(ph) > 0 ? 0 : Math.PI; } if (o.userData.roll) { o.rotation.x += dt * .35; o.rotation.z += dt * .1; }
       if (o.userData.base !== undefined && o.userData.stand) { const target = o.userData.base + (o === hover ? .35 : 0) + Math.sin(t * 1.4 + o.userData.stand.n) * .05; o.position.y += (target - o.position.y) * .15; if (o === hover) o.rotation.y += dt * .6; }
       if (mode === 'pav' && o.children.length) o.children.forEach(walk); });
     ctl.update(); R.render(scene, cam); }
