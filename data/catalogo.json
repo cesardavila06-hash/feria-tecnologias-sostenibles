@@ -428,57 +428,50 @@
      "industria": "Agua y saneamiento",
      "sector": "Tratamiento de agua con energía solar",
      "tecnologias": [
-      "Desalinización solar de agua salobre",
-      "Tratamiento y reúso de aguas residuales",
+      "Remoción de hierro",
+      "Tratamiento de agua para uso agropecuario",
       "Energía solar 100 %"
      ],
-     "titulo": "Del acceso al agua al desarrollo productivo sostenible",
-     "lugar": "Comunidad wayuu de Santa Ana, La Guajira (Colombia) · PTAR San Juan de Miraflores, Lima (Perú)",
-     "reto": "La comunidad indígena wayuu de Santa Ana, en La Guajira, no tenía acceso a agua limpia: dependía de agua transportada, con un costo alto, y su única fuente local era un pozo de agua salobre. Sin agua limpia tampoco podía desarrollar actividades productivas, como la crianza de aves.",
-     "solucion": "Boreal Light instaló una planta alimentada al 100 % con energía solar que desaliniza el agua salobre del pozo existente y produce 20 000 litros de agua limpia al día. En el Perú implementó una planta de capacidad equivalente en la PTAR de San Juan de Miraflores, en Lima, para tratar aguas residuales y obtener agua para reúso. La misma tecnología se adapta a fuentes de agua muy distintas.",
+     "titulo": "Cuando la calidad del agua decide la producción",
+     "lugar": "Granja avícola en Veracruz (México)",
+     "reto": "En México la agroindustria enfrenta desafíos crecientes para garantizar el acceso a agua de calidad. En distintas regiones los acuíferos presentan contaminación por hierro e intrusión salina, que deterioran la calidad del agua y limitan su uso en actividades agrícolas y ganaderas. Estas condiciones afectan directamente a la productividad del sector. Ese era el desafío de una granja avícola en Veracruz, donde la elevada concentración de hierro en el agua estaba provocando la muerte de pollos y amenazando la productividad de la granja.",
+     "solucion": "Boreal Light implementó en Veracruz un sistema de tratamiento con capacidad de 20 000 litros por hora, diseñado para eliminar el exceso de hierro y garantizar un suministro constante de agua limpia y segura para los animales. El sistema, impulsado por energía 100 % solar, produce más de 440 m³ de agua tratada al día y abastece las necesidades de aproximadamente 500 000 pollos. La granja cuenta así con una fuente fiable y sostenible de agua de calidad, que protege la salud de los animales y asegura la continuidad de la producción.",
      "cifras_titulo": "Los resultados",
      "cifras": [
       [
-       "20 000 L/día",
-       "de agua limpia (7,3 millones de litros al año)"
+       "20 000 L/h",
+       "capacidad de tratamiento"
       ],
       [
-       "−89,6 %",
-       "en el costo de suministro de agua"
+       "440 m³/día",
+       "de agua tratada"
       ],
       [
-       "COP 25,8 M",
-       "de ahorro económico anual"
-      ],
-      [
-       "160",
-       "familias beneficiadas"
-      ],
-      [
-       "5–7 tCO₂/año",
-       "evitadas al eliminar 7 200 km/año de transporte de agua"
+       "500 000",
+       "pollos abastecidos"
       ],
       [
        "100 %",
        "energía solar"
       ]
      ],
-     "circular": "La salmuera de la desalinización abastece una laguna de peces comunitaria y riega cultivos de papaya, frijol guajiro, guanábana y plátano. Con el agua, la comunidad abrió una fábrica de hielo y de agua en bolsa que genera ingresos y ayuda a financiar la operación y el mantenimiento de la planta, y una granja avícola que antes era inviable.",
-     "nota": "Cifras reportadas por Boreal Light GmbH para el proyecto de Santa Ana (La Guajira, Colombia).",
+     "circular": "El agua del acuífero estaba fuera de uso por el exceso de hierro. El tratamiento la devuelve a la producción con energía 100 % solar: en lugar de abrir una fuente nueva o traer agua de otro lugar, la granja recupera el recurso que ya tenía bajo sus pies y mantiene su operación en marcha.",
+     "nota": "Cifras reportadas por Boreal Light GmbH para el proyecto de Veracruz (México).",
      "contactos": [
       {
-       "nombre": "Ali Al-hakim",
+       "nombre": "Isabel Castro D.",
        "correos": [
-        "alhakim@boreallight.com"
+        "i.castro@winture.de"
        ],
        "telefonos": [
-        "+49 174 4453532"
+        "+49 176 7095 0274"
        ],
        "direccion": "Berlín, Alemania"
       }
      ],
      "web": "https://www.boreallight.com/",
-     "web_etiqueta": "boreallight.com"
+     "web_etiqueta": "boreallight.com",
+     "contacto_titulo": "Contacto"
     },
     {
      "n": 9,

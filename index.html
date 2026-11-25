@@ -460,7 +460,7 @@ function renderDetail(){
     <section class="d-foot${contacts.length > 1 ? ' multi' : ''}">
       <div class="contacts">${contacts.map(c => `
         <div class="contact" aria-label="Contacto">
-          <div class="eyebrow">${contacts.length > 1 ? 'Contacto' : 'Contacto en el Perú'}</div>
+          <div class="eyebrow">${s.contacto_titulo || (contacts.length > 1 ? 'Contacto' : 'Contacto en el Perú')}</div>
           <div class="who">${esc(c.nombre)}</div>
           ${c.cargo ? `<div class="role">${esc(c.cargo)}</div>` : ''}
           ${(c.correos||[]).filter(Boolean).map(v => `<div class="crow"><span class="lab">Correo</span><span class="val">${esc(v)}</span><button class="copy" data-v="${esc(v)}">Copiar</button></div>`).join('')}
