@@ -151,6 +151,7 @@ button.pill{font:inherit;font-family:var(--display);font-weight:700;font-size:13
 
 /* Cinta de logos */
 .ribbon{display:flex;flex-direction:column;gap:12px}
+.ribbon-top{margin:14px 0 4px}.ribbon-top .lab{display:none}.ribbon-top .marquee{padding-block:10px}
 .ribbon .lab{font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center}
 .marquee{position:relative;overflow:hidden;border-radius:18px;background:var(--paper);border:1px solid var(--line);padding-block:14px}
 .mwrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
@@ -247,6 +248,7 @@ button.pill{font:inherit;font-family:var(--display);font-weight:700;font-size:13
 </div>
 
 <div class="wrap">
+  <section class="ribbon ribbon-top" id="ribbon" aria-label="Aliados"></section>
   <main id="home">
     <div class="wrap" style="padding:0;max-width:none">
       <header class="hero fade" id="hero"></header>
@@ -268,7 +270,6 @@ button.pill{font:inherit;font-family:var(--display);font-weight:700;font-size:13
   </main>
 
   <main id="detail" hidden></main>
-  <section class="ribbon" id="ribbon" aria-label="Aliados"></section>
   <footer class="legal">
     <p>© 2026 · Este portal fue desarrollado con el apoyo de la cooperación alemana para el desarrollo, implementada por la Deutsche Gesellschaft für Internationale Zusammenarbeit (<a href="https://www.giz.de/en/regions/latin-america-caribbean/peru" target="_blank" rel="noopener">GIZ</a>) GmbH.</p>
   </footer>
