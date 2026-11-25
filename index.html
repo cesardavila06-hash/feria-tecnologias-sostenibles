@@ -154,11 +154,12 @@ button.pill{font:inherit;font-family:var(--display);font-weight:700;font-size:13
 .ribbon .lab{font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center}
 .marquee{position:relative;overflow:hidden;border-radius:18px;background:var(--paper);border:1px solid var(--line);padding-block:14px}
 .mwrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.track{display:flex;gap:48px;width:max-content;align-items:center;animation:slide 40s linear infinite}
+.track{display:flex;gap:56px;width:max-content;align-items:center;animation:slide 40s linear infinite}
 .marquee:hover .track{animation-play-state:paused}
-.track figure{margin:0;height:56px;display:grid;place-items:center;flex:none}
+.track figure{margin:0;height:76px;display:grid;place-items:center;flex:none}
 .track img{max-height:52px;max-width:210px;object-fit:contain;display:block}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:640px){.track{gap:36px}.track figure{height:58px}.track img{zoom:.72}}
 @media (prefers-reduced-motion: reduce){.track{animation:none;flex-wrap:wrap;width:auto;justify-content:center;padding-inline:16px}.track .dup{display:none}}
 
 /* Pie con créditos */
@@ -386,8 +387,8 @@ function buildGrid(p, list){
   return `<div class="build-grid">${list.map(s => `<div class="build"><div class="hazard"></div><div class="in"><b>Stand ${s.n}</b><span>En construcción</span></div></div>`).join('')}</div>`;
 }
 function renderRibbon(){
-  const items = (S.data.aliados||[]).map(a => ({ src:a.logo, alt:a.nombre }));
-  const one = (cls) => items.map(i => `<figure class="${cls}"><img src="${esc(i.src)}" alt="${cls ? '' : esc(i.alt)}"></figure>`).join('');
+  const items = (S.data.aliados||[]).map(a => ({ src:a.logo, alt:a.nombre, h:a.alto }));
+  const one = (cls) => items.map(i => `<figure class="${cls}"><img src="${esc(i.src)}" alt="${cls ? '' : esc(i.alt)}"${i.h ? ` style="height:${i.h}px;max-height:none;max-width:none"` : ''}></figure>`).join('');
   $('#ribbon').innerHTML = `<div class="lab">Aliados</div><div class="marquee"><div class="mwrap"><div class="track">${one('')}${one('dup')}</div></div></div>`;
 }
 function renderGrid(){

@@ -2,28 +2,34 @@
  "evento": "Feria virtual de tecnologías industriales sostenibles",
  "aliados": [
   {
-   "nombre": "Rumbo al IX Foro Internacional de Economía Circular",
-   "logo": "img/partner-foro-ec.png"
+   "nombre": "IX Foro Internacional de Economía Circular",
+   "logo": "img/aliado-foro-ec.png",
+   "alto": 72
   },
   {
-   "nombre": "Unión Europea · Cooperación Alemana · GIZ",
-   "logo": "img/partner-ue-giz.png"
+   "nombre": "Unión Europea · Cooperación Alemana · GIZ · Ministerio Federal de Economía y Energía de Alemania",
+   "logo": "img/aliado-ue-giz-bmwe.png",
+   "alto": 63
   },
   {
-   "nombre": "AHK Perú",
-   "logo": "img/partner-ahk.png"
+   "nombre": "AHK Perú · Cámara de Comercio e Industria Peruano-Alemana",
+   "logo": "img/aliado-ahk.png",
+   "alto": 40
   },
   {
    "nombre": "Cámara Oficial de Comercio de España en el Perú",
-   "logo": "img/camara-espana.png"
+   "logo": "img/aliado-camara-espana.png",
+   "alto": 38
   },
   {
    "nombre": "Finlandia Circular",
-   "logo": "img/finlandia-circular.png"
+   "logo": "img/aliado-finlandia-circular.png",
+   "alto": 41
   },
   {
    "nombre": "SwissCham Perú · Cámara de Comercio Suiza en el Perú",
-   "logo": "img/camara-suiza.png"
+   "logo": "img/aliado-swisscham.png",
+   "alto": 41
   }
  ],
  "_plantilla_stand": {
