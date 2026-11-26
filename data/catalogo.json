@@ -88,7 +88,12 @@
      "empresa": "HUBER Technology Perú",
      "razon_social": "",
      "logo": "img/logo-huber.svg",
-     "imagenes": [],
+     "imagenes": [
+      {
+       "src": "img/huber-secador-solar.jpg",
+       "pie": "HUBER Solar Active Sludge Dryer: secado de lodos con energía solar"
+      }
+     ],
      "industria": "Saneamiento municipal",
      "sector": "Saneamiento y tratamiento de aguas residuales",
      "tecnologias": [
