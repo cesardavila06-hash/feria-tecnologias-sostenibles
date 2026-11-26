@@ -381,7 +381,7 @@
       "Control de procesos en PTAR"
      ],
      "titulo": "Sensores WTW aprobados para la nueva PTAR de Ilo",
-     "lugar": "Nueva PTAR de Ilo · Southern Peru Copper Corporation · en construcción",
+     "lugar": "Nueva PTAR de Ilo (en construcción) · Southern Peru Copper Corporation",
      "reto": "Operar plantas de tratamiento de aguas residuales e industriales sin sobreconsumo de energía en la aireación ni de reactivos para ajustar el pH, y sin malos olores.",
      "solucion": "Sistemas IQ SensorNet de WTW con sensores en línea 24/7, de bajo consumo y larga vida útil, adaptados a cada planta. Fueron aprobados para la nueva PTAR de Ilo.",
      "cifras": [
@@ -595,7 +595,7 @@
      ],
      "cifras": [],
      "circular": "Considerar la sostenibilidad en todo el ciclo de vida del producto (diseño, uso y fin de vida) reduce el consumo de energía y materiales de los equipos que usan sus clientes.",
-     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú).",
      "contactos": [
       {
        "nombre": "Paul Guerrero",
@@ -642,7 +642,7 @@
      ],
      "cifras": [],
      "circular": "Medir y automatizar con precisión permite optimizar el consumo de recursos en los procesos, con una rentabilidad responsable y de largo plazo.",
-     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú).",
      "contactos": [
       {
        "nombre": "Sandro Cerna",
@@ -689,7 +689,7 @@
      ],
      "cifras": [],
      "circular": "Usar mejor los recursos existentes: evita consumos innecesarios, prolonga la vida útil de los activos eléctricos y reduce intervenciones correctivas, en línea con una gestión energética digital y trazable.",
-     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú).",
      "contactos": [
       {
        "nombre": "Luis Aching",
@@ -736,7 +736,7 @@
      ],
      "cifras": [],
      "circular": "Eliminar los reactivos químicos de la medición evita generar residuos peligrosos, y el monitoreo continuo ayuda a optimizar el tratamiento y el reúso del agua.",
-     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú). Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "nota": "Ficha elaborada con la información del brochure del Clúster de Tecnologías Alemanas para la Sostenibilidad y Circularidad (AHK Perú).",
      "contactos": [
       {
        "nombre": "Leonel Aguilar",
@@ -1175,7 +1175,7 @@
      "estado": "ocupado",
      "eyebrow": "Solución destacada",
      "empresa": "ACCIONA",
-     "razon_social": "Grupo español con más de 100 años · en el Perú desde 1998",
+     "razon_social": "Grupo español con más de 100 años de experiencia · en el Perú desde 1998",
      "logo": "img/logo-acciona.png",
      "imagenes": [
       {
@@ -1191,35 +1191,18 @@
      "sector": "Infraestructuras sostenibles y energías renovables",
      "tecnologias": [
       "Energía renovable",
-      "Depuración y reutilización de agua",
-      "Valorización de residuos",
-      "Movilidad eléctrica e hidrógeno verde"
+      "Agua",
+      "Transporte",
+      "Infraestructuras sociales y ciudades"
      ],
-     "titulo": "Infraestructura y energía renovable para una economía baja en carbono",
-     "lugar": "Perú desde 1998 · capacidad renovable en 22 países",
-     "reto": "La transición a una economía baja en carbono exige infraestructuras que generen energía limpia, usen el agua de forma eficiente y aprovechen los residuos, durante todo su ciclo de vida.",
-     "solucion": "ACCIONA desarrolla proyectos en toda la cadena de valor: diseño, construcción, operación y mantenimiento. Trabaja en energía (eólica, fotovoltaica, hidroeléctrica, biomasa, almacenamiento, autoconsumo, hidrógeno verde y movilidad eléctrica), transporte, agua (depuración y reutilización, desalación, potabilización y agua para la agricultura) y ciudades. Ofrece a sus clientes soluciones de descarbonización: optimización de consumos, monitorización energética, generación distribuida y electrificación de procesos.",
-     "cifras_titulo": "Cifras globales",
-     "cifras": [
-      [
-       "14,6 GW",
-       "de capacidad renovable instalada en 22 países"
-      ],
-      [
-       "27 648 GWh/año",
-       "de electricidad limpia generada"
-      ],
-      [
-       "98,2 %",
-       "del CAPEX alineado con la Taxonomía Europea"
-      ],
-      [
-       "90,3 %",
-       "de los ingresos elegibles alineados con la Taxonomía Europea"
-      ]
-     ],
-     "circular": "Tecnologías para reutilizar el agua, valorizar residuos y producir energía a partir de materiales recuperados; almacenamiento con baterías de segunda vida; hidrógeno y gases renovables; y plantas de clasificación y recuperación que convierten residuos en materias primas secundarias y electricidad limpia.",
-     "nota": "Cifras globales reportadas por ACCIONA.",
+     "titulo": "Infraestructuras sostenibles con un modelo de impacto regenerativo",
+     "lugar": "España · presencia en el Perú desde 1998",
+     "reto": "La descarbonización de la economía, el cambio climático, la escasez hídrica y la urbanización acelerada exigen infraestructuras que no solo reduzcan sus impactos negativos, sino que generen beneficios duraderos para las comunidades.",
+     "solucion": "ACCIONA es un grupo global líder en el desarrollo y gestión de soluciones sostenibles de infraestructura y energías renovables. Desarrolla proyectos a lo largo de toda la cadena de valor, desde el diseño y la construcción hasta la operación y el mantenimiento de infraestructuras. Sus soluciones abarcan energía renovable, agua, transporte, infraestructuras sociales, ciudades e inmobiliaria.",
+     "cifras_titulo": "Sus soluciones",
+     "cifras": [],
+     "circular": "La sostenibilidad es el eje de su estrategia. ACCIONA diseña, construye, opera y financia infraestructuras con un modelo de impacto regenerativo: busca generar beneficios ambientales, sociales y económicos duraderos para las comunidades donde opera, con un firme compromiso con la acción climática, la transparencia y la ética empresarial.",
+     "nota": "",
      "contactos": [
       {
        "nombre": "Álvaro Delgado",
@@ -1233,7 +1216,13 @@
       }
      ],
      "web": "https://www.acciona.com",
-     "web_etiqueta": "acciona.com"
+     "web_etiqueta": "acciona.com",
+     "beneficios": [
+      "Energía renovable para descarbonizar la economía",
+      "Soluciones de agua frente a la escasez hídrica",
+      "Transporte, infraestructuras sociales, ciudades e inmobiliaria sostenibles",
+      "Planes Directores de Sostenibilidad alineados con los Objetivos de Desarrollo Sostenible"
+     ]
     },
     {
      "n": 8,
@@ -1273,7 +1262,7 @@
       "Menos residuos destinados a eliminación"
      ],
      "circular": "Da valor energético a fracciones de residuos que no pueden reciclarse y recupera energía que de otro modo se perdería. Además, trabaja en la electrificación de equipos de tratamiento de emisiones.",
-     "nota": "Ficha elaborada con la información enviada por Kalfrisa. Las cifras de un caso concreto se agregarán cuando la empresa las envíe.",
+     "nota": "Ficha elaborada con la información enviada por Kalfrisa.",
      "contactos": [
       {
        "nombre": "Gonzalo Estallo",

@@ -348,7 +348,7 @@ function renderSummary(){
   } else {
     const occ = occupied(S.pav), inds = new Set(occ.map(s => s.industria).filter(Boolean));
     el.innerHTML = occ.length
-      ? `<div><b>${S.pav.stands.length}</b><span>stands</span></div><div><b>${occ.length}</b><span>empresas</span></div><div><b>${inds.size}</b><span>industrias</span></div><div><b>${building(S.pav).length}</b><span>en construcción</span></div>`
+      ? `<div><b>${S.pav.stands.length}</b><span>stands</span></div><div><b>${occ.length}</b><span>empresas</span></div><div><b>${inds.size}</b><span>industrias</span></div>${building(S.pav).length ? `<div><b>${building(S.pav).length}</b><span>en construcción</span></div>` : ''}`
       : `<div><b>${S.pav.stands.length}</b><span>stands en construcción</span></div><div><b>0</b><span>empresas cargadas</span></div>`;
   }
 }
